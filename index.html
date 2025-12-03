@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWY14Z6S8G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CWY14Z6S8G');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 9:16 Ad Agency | Vertical Performance</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+    
+    <meta name="description" content="We scale South African brands using high-performance 9:16 vertical video ads on TikTok, Reels, and Shorts.">
+    
+    <meta property="og:title" content="The 9:16 Agency | Vertical Ad Performance">
+    <meta property="og:description" content="Stop the scroll. We combine creative strategy with ad account math to drive revenue.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
+    <meta property="og:url" content="https://the916agency.netlify.app">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tiktok: '#25F4EE',
+                        tiktokdark: '#1CD4CE',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Smooth Gradients & Text */
+        .brand-gradient {
+            background: linear-gradient(90deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(20, 20, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .hero-bg {
+            background-color: #050505;
+            background-image: 
+                linear-gradient(rgba(37, 244, 238, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 244, 238, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Utilities */
+        .mobile-menu-active { display: block !important; }
+        
+        /* Initial state for scroll elements */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        /* Final state when visible */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-2 z-50">
+                    <div class="border-2 border-white w-5 h-8 rounded-sm relative">
+                        <div class="absolute inset-0 bg-tiktok opacity-20"></div>
+                    </div>
+                    <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-white">THE 9:16 <span class="text-tiktok">AGENCY</span></span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#method" class="hover:text-tiktok transition px-3 py-2 rounded-md text-sm font-medium">The Method</a>
+                        <a href="#pricing" class="hover:text-tiktok transition px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                        <a href="#contact" class="bg-tiktok hover:bg-white text-black px-5 py-2.5 rounded-none text-sm font-bold transition uppercase tracking-wide transform hover:-translate-y-0.5">Get Audit</a>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center z-50">
+                    <button id="mobile-menu-btn" class="text-white hover:text-tiktok focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
+            <div class="flex flex-col space-y-6">
+                <a href="#method" class="text-2xl font-bold hover:text-tiktok mobile-link">The Method</a>
+                <a href="#pricing" class="text-2xl font-bold hover:text-tiktok mobile-link">Pricing</a>
+                <a href="#contact" class="text-2xl font-bold text-tiktok mobile-link">Get Strategy Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative border-b border-white/10 overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-6 px-4 py-1.5 border border-zinc-700 bg-zinc-900/80 text-xs font-bold uppercase tracking-widest text-zinc-400 rounded-full animate-fade-in-up">
+                <span class="w-2 h-2 bg-green-500 rounded-full inline-block mr-2 animate-pulse"></span> Johannesburg Based • Global Reach
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-none text-white">
+                WE OWN THE <br>
+                <span class="text-tiktok">VERTICAL FEED.</span>
+            </h1>
+            
+            <p class="mt-6 max-w-2xl mx-auto text-xl text-zinc-400 font-light leading-relaxed">
+                The world has shifted to 9:16. We combine <strong class="text-white">High-Performance Creative</strong> with <strong class="text-white">Ad Account Math</strong> to drive revenue in South Africa.
+            </p>
+            
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pricing" class="px-8 py-4 bg-tiktok hover:bg-white text-black font-bold text-lg transition uppercase tracking-wide transform hover:scale-105 duration-200">
+                    View Packages
+                </a>
+                <a href="#method" class="px-8 py-4 bg-transparent border border-zinc-600 hover:border-white text-white font-semibold text-lg transition uppercase tracking-wide">
+                    How It Works
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute top-1/2 left-10 w-64 h-64 bg-tiktok/10 rounded-full blur-[100px] -z-0 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] -z-0 animate-pulse-slow"></div>
+    </section>
+
+    <div class="border-b border-white/5 bg-black py-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-zinc-500 text-xs font-bold uppercase tracking-widest mb-8">Powering Growth On</p>
+
+            <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-50 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-tiktok text-3xl text-white"></i>
+                    <span class="font-bold text-xl">TikTok</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-meta text-3xl text-blue-500"></i>
+                    <span class="font-bold text-xl">Meta Ads</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-youtube text-3xl text-red-600"></i>
+                    <span class="font-bold text-xl">Shorts</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M4.5 12l.6 1.8c.2.6.7 1 1.4 1h10c.7 0 1.2-.4 1.4-1l.6-1.8c.2-.6-.2-1.2-.8-1.2H5.3c-.6 0-1 .6-.8 1.2z"/></svg>
+                    <span class="font-bold text-xl">CapCut</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section id="method" class="py-24 bg-zinc-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-4xl font-bold mb-6 reveal">Why <span class="text-tiktok">"9:16"?</span></h2>
+                    <p class="text-zinc-400 text-lg mb-6">
+                        It's the aspect ratio of the mobile screen. It's how 24 million South Africans consume content daily.
+                    </p>
+                    <p class="text-zinc-400 text-lg mb-8">
+                        Traditional agencies force TV commercials into this space. They fail. We build specifically for the vertical feed.
+                    </p>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-start group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">1</div>
+                            <div>
+                                <h4 class="font-bold text-white">The Hook</h4>
+                                <span class="text-zinc-400 text-sm">We script the first 2 seconds to stop the scroll immediately.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">2</div>
+                            <div>
+                                <h4 class="font-bold text-white">Native UGC Style</h4>
+                                <span class="text-zinc-400 text-sm">Content that looks like it belongs on the platform, not a glossy ad.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">3</div>
+                            <div>
+                                <h4 class="font-bold text-white">Scale Architecture</h4>
+                                <span class="text-zinc-400 text-sm">Ad account structures designed for the SA market to find buyers.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative order-1 md:order-2 animate-float">
+                    <div class="aspect-[9/16] max-w-sm mx-auto bg-black border-[8px] border-zinc-800 rounded-[3rem] overflow-hidden shadow-2xl shadow-tiktok/20 relative z-10">
+                        
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 bg-zinc-800 rounded-b-xl z-20"></div>
+
+                        <div class="absolute inset-0 bg-zinc-900 flex flex-col">
+                            <div class="flex-1 bg-zinc-800 relative flex items-center justify-center overflow-hidden group">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10 pointer-events-none"></div>
+                                
+                                <video id="phone-video" class="absolute inset-0 w-full h-full object-cover opacity-90" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
+                                    <source src="https://player.vimeo.com/external/459389137.sd.mp4?s=954d5b7468137350cb4be1297d26dfa76cb404c1&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
+                                </video>
+
+                                <button id="play-btn" class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center z-20 hover:scale-110 hover:bg-tiktok hover:text-black transition duration-300 cursor-pointer">
+                                    <i id="play-icon" class="fa-solid fa-pause text-white text-2xl ml-0.5"></i>
+                                </button>
+                            
+                                <div class="absolute right-4 bottom-24 flex flex-col gap-6 text-white z-20 items-center">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                            <i class="fa-solid fa-heart"></i>
+                                        </div>
+                                        <span class="text-xs font-bold">4.2k</span>
+                                    </div>
+                                    
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                        </div>
+                                        <span class="text-xs font-bold">204</span>
+                                    </div>
+                                    
+                                    <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                        <i class="fa-solid fa-share"></i>
+                                    </div>
+                                </div>
+
+                                <div class="absolute bottom-6 left-4 z-20 max-w-[70%] text-left pointer-events-none">
+                                    <div class="bg-white/20 backdrop-blur-md px-2 py-1 rounded mb-2 inline-block text-[10px] font-bold uppercase text-white">Sponsored</div>
+                                    <p class="text-white text-sm font-semibold leading-tight">Stop scrolling! 🛑 This is how we scale brands to R1M+.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-black border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">Transparent Pricing</h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto">We don't bill by the hour. We sell outcomes.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                
+                <div class="glass-card reveal p-8 flex flex-col hover:border-zinc-500 transition duration-300">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Creative Only</span>
+                        <h3 class="text-2xl font-bold mt-2">The Content Pack</h3>
+                    </div>
+                    <div class="mb-8 border-b border-zinc-800 pb-8">
+                        <span class="text-4xl font-bold text-white">R6,500</span>
+                        <span class="text-zinc-500">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1 text-zinc-400 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> 4x 9:16 Video Assets</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> Scripting & Concepts</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> 1 Revision Round</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 border border-zinc-700 hover:bg-white hover:text-black text-center text-sm font-bold uppercase tracking-wider transition">Start Creative</a>
+                </div>
+
+                <div class="glass-card reveal p-8 flex flex-col border-tiktok shadow-[0_0_30px_rgba(37,244,238,0.15)] relative overflow-hidden transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-tiktok text-black text-xs font-bold px-3 py-1">POPULAR</div>
+                    <div class="mb-4">
+                        <span class="text-xs font-bold text-tiktok uppercase tracking-widest">Creative + Ads</span>
+                        <h3 class="text-2xl font-bold mt-2">Full Stack Scale</h3>
+                    </div>
+                    <div class="mb-8 border-b border-zinc-800 pb-8">
+                        <span class="text-4xl font-bold text-white">R18,500</span>
+                        <span class="text-zinc-500">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1 text-zinc-300 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> <strong>Everything in Content Pack</strong></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Full Ad Account Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Pixel Setup & Tracking</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Weekly Reporting</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 bg-tiktok hover:bg-white text-black text-center text-sm font-bold uppercase tracking-wider transition hover:shadow-lg">Partner With Us</a>
+                </div>
+
+                <div class="glass-card reveal p-8 flex flex-col hover:border-zinc-500 transition duration-300">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Ads Only</span>
+                        <h3 class="text-2xl font-bold mt-2">Growth Engine</h3>
+                    </div>
+                    <div class="mb-8 border-b border-zinc-800 pb-8">
+                        <span class="text-4xl font-bold text-white">R10,000</span>
+                        <span class="text-zinc-500">/mo</span>
+                        <p class="text-xs text-zinc-600 mt-2">+ % of Ad Spend</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1 text-zinc-400 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> Media Buying & Optimization</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> A/B Testing</li>
+                        <li class="flex items-center opacity-50"><i class="fa-solid fa-xmark text-zinc-500 mr-4 ml-1"></i> No Content Creation</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 border border-zinc-700 hover:bg-white hover:text-black text-center text-sm font-bold uppercase tracking-wider transition">Start Ads</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-zinc-950 relative border-t border-zinc-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="glass-card reveal p-8 md:p-12 rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-tiktok/10 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Dominate the Feed?</h2>
+                    <p class="text-zinc-400">Book your free Strategy Audit. We'll review your current setup and show you where you're losing money.</p>
+                </div>
+
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    
+                    <input type="hidden" name="access_key" value="124f905a-6710-4aef-bab9-29efcab492a7">
+                    
+                    <input type="hidden" name="subject" value="New Lead from 9:16 Agency Site">
+                    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Name</label>
+                            <input type="text" name="name" required class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="john@company.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Website / TikTok Handle</label>
+                        <input type="text" name="website" class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="www.yourbrand.co.za">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Monthly Ad Budget (ZAR)</label>
+                        <select name="budget" class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition">
+                            <option value="5k-15k">R5,000 - R15,000</option>
+                            <option value="15k-50k">R15,000 - R50,000</option>
+                            <option value="50k+">R50,000+</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn" class="w-full bg-tiktok hover:bg-white text-black font-bold text-lg py-4 transition uppercase tracking-wide mt-4">
+                        Request Audit
+                    </button>
+                    
+                    <div id="result" class="text-center text-sm font-bold mt-4 hidden"></div>
+
+                    <p class="text-center text-zinc-600 text-xs mt-4"><i class="fa-solid fa-lock mr-2"></i> No obligation. 100% Free.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-zinc-900 py-12 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold tracking-tighter text-white">THE 9:16 <span class="text-tiktok">AGENCY</span></span>
+                <p class="text-zinc-600 text-sm mt-1">Johannesburg, South Africa</p>
+            </div>
+            <div class="flex gap-6 mb-4 md:mb-0">
+                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-tiktok text-xl"></i></a>
+                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+            </div>
+            <div class="text-zinc-600 text-sm">
+                &copy; 2025 The 9:16 Ad Agency.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            // Toggle Icon
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('result');
+        const submitBtn = document.getElementById('submitBtn');
+        const originalBtnText = submitBtn.innerHTML;
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            // Change button text to show loading
+            submitBtn.innerHTML = "Sending...";
+            submitBtn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "<span class='text-green-400'>Message sent! We'll be in touch.</span>";
+                        result.classList.remove('hidden');
+                        submitBtn.innerHTML = "Request Sent ✓";
+                        submitBtn.classList.remove('bg-tiktok');
+                        submitBtn.classList.add('bg-green-500');
+                    } else {
+                        console.log(response);
+                        result.innerHTML = json.message;
+                        result.classList.remove('hidden');
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = "Something went wrong!";
+                    result.classList.remove('hidden');
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                })
+                .then(function() {
+                    form.reset();
+                    setTimeout(() => {
+                        result.style.display = "none";
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.classList.add('bg-tiktok');
+                        submitBtn.classList.remove('bg-green-500');
+                        submitBtn.disabled = false;
+                    }, 5000);
+                });
+        });
+
+        // --- VIDEO PLAYER LOGIC ---
+        const video = document.getElementById('phone-video');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+
+        // Make sure the icon matches the video state on load
+        if (video.paused) {
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+            playIcon.classList.add('ml-1'); // Visual centering for play icon
+        } else {
+            playIcon.classList.remove('fa-play');
+            playIcon.classList.add('fa-pause');
+            playIcon.classList.remove('ml-1');
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                playIcon.classList.remove('ml-1');
+            } else {
+                video.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                playIcon.classList.add('ml-1');
+            }
+        });
+
+        // --- SCROLL REVEAL ANIMATION ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15, // Trigger when 15% of element is visible
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
