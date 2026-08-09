@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const OpenAI = require('openai');
 const path = require('path');
 
 const app = express();
@@ -9,9 +8,24 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+// AI Provider Configuration - ALL FREE OPTIONS
+const AI_PROVIDER = process.env.AI_PROVIDER || 'groq'; // 'groq', 'gemini', or 'huggingface'
+
+const AI_CONFIG = {
+  groq: {
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    model: 'llama-3.1-8b-instant', // Fast & free
+    apiKey: process.env.GROQ_API_KEY
+  },
+  gemini: {
+    url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+    apiKey: process.env.GEMINI_API_KEY
+  },
+  huggingface: {
+    url: 'https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct',
+    apiKey: process.env.HF_API_KEY
+  }
+};
 
 // Lead qualification system prompt - customize per client
 const SYSTEM_PROMPT = `You are a friendly, professional lead qualification assistant for a digital marketing agency that specializes in vertical video ads (TikTok, Reels, Shorts).
@@ -63,14 +77,16 @@ app.post('/api/chat', async (req, res) => {
     const history = conversations.get(sessionId);
     history.push({ role: 'user', content: message });
     
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // Cost-effective for chat
-      messages: history,
-      max_tokens: 300,
-      temperature: 0.7
-    });
+    let reply;
     
-    const reply = completion.choices[0].message.content;
+    if (AI_PROVIDER === 'groq') {
+      reply = await callGroq(history);
+    } else if (AI_PROVIDER === 'gemini') {
+      reply = await callGemini(history);
+    } else if (AI_PROVIDER === 'huggingface') {
+      reply = await callHuggingFace(history);
+    }
+    
     history.push({ role: 'assistant', content: reply });
     
     // Analyze for lead score (simple keyword detection)
@@ -90,6 +106,89 @@ app.post('/api/chat', async (req, res) => {
     });
   }
 });
+
+// GROQ - FREE (Llama 3.1, very fast)
+// Get key at: https://console.groq.com/keys
+async function callGroq(messages) {
+  const response = await fetch(AI_CONFIG.groq.url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${AI_CONFIG.groq.apiKey}`
+    },
+    body: JSON.stringify({
+      model: AI_CONFIG.groq.model,
+      messages: messages,
+      max_tokens: 300,
+      temperature: 0.7
+    })
+  });
+  
+  const data = await response.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.choices[0].message.content;
+}
+
+// GOOGLE GEMINI - FREE (1500 requests/day)
+// Get key at: https://aistudio.google.com/app/apikey
+async function callGemini(messages) {
+  // Convert to Gemini format
+  const contents = messages
+    .filter(m => m.role !== 'system')
+    .map(m => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }));
+  
+  const systemInstruction = messages.find(m => m.role === 'system')?.content || '';
+  
+  const response = await fetch(`${AI_CONFIG.gemini.url}?key=${AI_CONFIG.gemini.apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents,
+      systemInstruction: { parts: [{ text: systemInstruction }] },
+      generationConfig: {
+        maxOutputTokens: 300,
+        temperature: 0.7
+      }
+    })
+  });
+  
+  const data = await response.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.candidates[0].content.parts[0].text;
+}
+
+// HUGGING FACE - FREE (rate limited)
+// Get key at: https://huggingface.co/settings/tokens
+async function callHuggingFace(messages) {
+  const prompt = messages.map(m => {
+    if (m.role === 'system') return `<|system|>\n${m.content}</s>`;
+    if (m.role === 'user') return `<|user|>\n${m.content}</s>`;
+    return `<|assistant|>\n${m.content}</s>`;
+  }).join('\n') + '\n<|assistant|>\n';
+  
+  const response = await fetch(AI_CONFIG.huggingface.url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${AI_CONFIG.huggingface.apiKey}`
+    },
+    body: JSON.stringify({
+      inputs: prompt,
+      parameters: {
+        max_new_tokens: 300,
+        temperature: 0.7,
+        return_full_text: false
+      }
+    })
+  });
+  
+  const data = await response.json();
+  if (data.error) throw new Error(data.error);
+  return data[0].generated_text.split('</s>')[0].trim();
+}
 
 // Simple lead scoring based on conversation
 function analyzeLeadScore(history) {
