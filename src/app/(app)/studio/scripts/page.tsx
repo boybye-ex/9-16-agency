@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 export default function ScriptsPage() {
   const [script, setScript] = useState(
@@ -12,10 +12,14 @@ export default function ScriptsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
+  async function improve() {
+    if (script.trim().length < 10) {
+      setError("Paste a longer script to improve.");
+      return;
+    }
     setLoading(true);
     setError("");
+    setResult("");
     try {
       const res = await fetch("/api/ai/scripts", {
         method: "POST",
@@ -24,7 +28,7 @@ export default function ScriptsPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed");
-      setResult(data.improved);
+      setResult(data.improved || "No script returned.");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error");
     } finally {
@@ -39,14 +43,13 @@ export default function ScriptsPage() {
         Paste a rough script. Get a tighter hook, body, and CTA for vertical video.
       </p>
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
-        <form onSubmit={onSubmit} className="panel space-y-4 rounded-2xl p-6">
+        <div className="panel space-y-4 rounded-2xl p-6">
           <div>
             <label className="mb-2 block text-sm text-[#a8b3c2]">Your script</label>
             <textarea
               className="input min-h-40"
               value={script}
               onChange={(e) => setScript(e.target.value)}
-              required
             />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -69,17 +72,18 @@ export default function ScriptsPage() {
           </div>
           {error ? <p className="text-sm text-[#c50337]">{error}</p> : null}
           <button
-            type="submit"
+            type="button"
+            onClick={() => void improve()}
             disabled={loading}
             className="btn-primary rounded-xl px-5 py-3 text-sm font-semibold disabled:opacity-60"
           >
             {loading ? "Improving…" : "Improve script"}
           </button>
-        </form>
+        </div>
         <div className="panel rounded-2xl p-6">
           <h2 className="text-sm font-semibold text-[#a8b3c2]">Improved script</h2>
           <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-[#fafafa]">
-            {result || "Your improved script will appear here."}
+            {loading ? "Improving your script…" : result || "Your improved script will appear here."}
           </pre>
         </div>
       </div>

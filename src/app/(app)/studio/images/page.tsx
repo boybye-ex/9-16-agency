@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 const styles = ["Cinematic", "UGC phone", "Bold product", "Neon night", "Clean studio"];
 
@@ -14,8 +14,11 @@ export default function ImageStudioPage() {
   const [result, setResult] = useState<{ url: string; prompt: string } | null>(null);
   const [gallery, setGallery] = useState<{ url: string; prompt: string }[]>([]);
 
-  async function onGenerate(e: FormEvent) {
-    e.preventDefault();
+  async function generate() {
+    if (!prompt.trim()) {
+      setError("Add a prompt first.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
@@ -43,7 +46,7 @@ export default function ImageStudioPage() {
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
-        <form onSubmit={onGenerate} className="panel space-y-4 rounded-2xl p-6">
+        <div className="panel space-y-4 rounded-2xl p-6">
           <div>
             <label className="mb-2 block text-sm text-[#a8b3c2]">Prompt</label>
             <textarea
@@ -51,7 +54,6 @@ export default function ImageStudioPage() {
               onChange={(e) => setPrompt(e.target.value)}
               rows={4}
               className="input resize-y"
-              required
             />
           </div>
           <div>
@@ -75,13 +77,14 @@ export default function ImageStudioPage() {
           </div>
           {error ? <p className="text-sm text-[#c50337]">{error}</p> : null}
           <button
-            type="submit"
+            type="button"
+            onClick={() => void generate()}
             disabled={loading}
             className="btn-primary rounded-xl px-5 py-3 text-sm font-semibold disabled:opacity-60"
           >
             {loading ? "Generating…" : "Generate 9:16 image"}
           </button>
-        </form>
+        </div>
 
         <div className="panel overflow-hidden rounded-2xl">
           <div className="relative mx-auto aspect-[9/16] max-h-[70vh] w-full bg-black/40">
@@ -94,7 +97,7 @@ export default function ImageStudioPage() {
               />
             ) : (
               <div className="flex h-full items-center justify-center p-6 text-center text-sm text-[#a8b3c2]">
-                Your generated image will show here
+                {loading ? "Generating your image…" : "Your generated image will show here"}
               </div>
             )}
           </div>
