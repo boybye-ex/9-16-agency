@@ -40,8 +40,17 @@ Copy `.env.example` to `.env`:
 - `META_APP_ID` / `META_APP_SECRET` — optional live Meta OAuth
 - `TIKTOK_CLIENT_KEY` / `TIKTOK_CLIENT_SECRET` — optional live TikTok OAuth
 
-## Brand colours
+## Deploy (Netlify)
 
-- Primary: `#02060e`
-- Secondary: `#c50337`, `#00bbff`
-- Tertiary: `#fafafa`
+Production site: [https://9-16-agency.netlify.app](https://9-16-agency.netlify.app)
+
+Build settings live in `netlify.toml` (Next.js plugin + Prisma migrate/seed).
+
+Required Netlify environment variables:
+
+- `DATABASE_URL` — Postgres connection string
+- `AUTH_SECRET` — long random string
+- `AUTH_URL` — `https://9-16-agency.netlify.app`
+- `AUTH_TRUST_HOST` — `true`
+
+Optional: `OPENAI_API_KEY` / `GROQ_API_KEY`, Meta / TikTok OAuth keys.
