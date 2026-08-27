@@ -56,3 +56,4 @@ CLAUDE.md
 
 # Local Netlify folder
 .netlify
+deno.lock
