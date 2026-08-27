@@ -14,8 +14,12 @@ const schema = z.object({
 
 export async function POST(req: Request) {
   const session = await auth();
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Please sign in." }, { status: 401 });
+  const userId = session?.user?.id;
+  if (!userId) {
+    return NextResponse.json(
+      { error: "Please sign out and sign in again." },
+      { status: 401 },
+    );
   }
 
   const parsed = schema.safeParse(await req.json());
@@ -36,12 +40,12 @@ export async function POST(req: Request) {
     },
   ]);
 
-  const workspace = await getPrimaryWorkspace(session.user.id);
+  const workspace = await getPrimaryWorkspace(userId);
   if (workspace) {
     await prisma.project.create({
       data: {
         workspaceId: workspace.id,
-        userId: session.user.id,
+        userId,
         title: `Captions — ${topic.slice(0, 40)}`,
         type: "CAPTION",
         status: "ready",

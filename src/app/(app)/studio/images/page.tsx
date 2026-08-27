@@ -25,6 +25,7 @@ export default function ImageStudioPage() {
       const res = await fetch("/api/ai/image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ prompt, style, aspect: "9:16" }),
       });
       const data = await res.json();

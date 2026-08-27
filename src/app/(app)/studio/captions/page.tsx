@@ -22,6 +22,7 @@ export default function CaptionsPage() {
       const res = await fetch("/api/ai/captions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ topic, platform, tone, count: 5 }),
       });
       const data = await res.json();

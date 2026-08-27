@@ -24,6 +24,7 @@ export default function ScriptsPage() {
       const res = await fetch("/api/ai/scripts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ script, goal, length }),
       });
       const data = await res.json();
