@@ -1,11 +1,11 @@
 type ChatMessage = { role: "system" | "user" | "assistant"; content: string };
 
-function hasOpenAI() {
-  return Boolean(process.env.OPENAI_API_KEY);
-}
-
-function hasGroq() {
-  return Boolean(process.env.GROQ_API_KEY);
+function readKey(name: "OPENAI_API_KEY" | "GROQ_API_KEY") {
+  const value = (process.env[name] || "").trim();
+  if (!value) return null;
+  // Ignore placeholder / accidental non-key values
+  if (value.length < 20) return null;
+  return value;
 }
 
 export async function chatComplete(
@@ -15,42 +15,56 @@ export async function chatComplete(
   const temperature = options?.temperature ?? 0.7;
   const maxTokens = options?.maxTokens ?? 800;
 
-  if (hasGroq()) {
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages,
-        temperature,
-        max_tokens: maxTokens,
-      }),
-    });
-    if (!res.ok) throw new Error(`Groq error: ${await res.text()}`);
-    const data = await res.json();
-    return data.choices?.[0]?.message?.content?.trim() || "";
+  const groqKey = readKey("GROQ_API_KEY");
+  if (groqKey) {
+    try {
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${groqKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages,
+          temperature,
+          max_tokens: maxTokens,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const text = data.choices?.[0]?.message?.content?.trim();
+        if (text) return text;
+      }
+    } catch {
+      // fall through
+    }
   }
 
-  if (hasOpenAI()) {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages,
-        temperature,
-        max_tokens: maxTokens,
-      }),
-    });
-    if (!res.ok) throw new Error(`OpenAI error: ${await res.text()}`);
-    const data = await res.json();
-    return data.choices?.[0]?.message?.content?.trim() || "";
+  const openAiKey = readKey("OPENAI_API_KEY");
+  if (openAiKey) {
+    try {
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${openAiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages,
+          temperature,
+          max_tokens: maxTokens,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const text = data.choices?.[0]?.message?.content?.trim();
+        if (text) return text;
+      }
+    } catch {
+      // fall through
+    }
   }
 
   return localFallback(messages);
