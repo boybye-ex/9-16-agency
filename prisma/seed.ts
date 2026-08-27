@@ -5,15 +5,13 @@ import { seedMetricsForAccount } from "../src/lib/social";
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.contentMetric.deleteMany();
-  await prisma.socialAccount.deleteMany();
-  await prisma.asset.deleteMany();
-  await prisma.project.deleteMany();
-  await prisma.workspaceMember.deleteMany();
-  await prisma.workspace.deleteMany();
-  await prisma.session.deleteMany();
-  await prisma.account.deleteMany();
-  await prisma.user.deleteMany();
+  const existing = await prisma.user.findUnique({
+    where: { email: "agency@916adds.com" },
+  });
+  if (existing) {
+    console.log("Demo users already exist — skipping seed.");
+    return;
+  }
 
   const agencyPassword = await hash("agency123", 10);
   const memberPassword = await hash("member123", 10);
@@ -64,7 +62,7 @@ async function main() {
     },
   });
 
-  const agencyWorkspace = await prisma.workspace.create({
+  await prisma.workspace.create({
     data: {
       name: "9:16 Internal",
       slug: "916-internal",
@@ -143,7 +141,6 @@ async function main() {
   console.log("  agency@916adds.com / agency123");
   console.log("  team@916adds.com / member123");
   console.log("  client@916adds.com / client123");
-  console.log("Workspaces:", workspace.slug, agencyWorkspace.slug);
 }
 
 main()
