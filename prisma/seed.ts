@@ -1,8 +1,6 @@
+import { prisma } from "../src/lib/prisma";
 import { hash } from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
 import { seedMetricsForAccount } from "../src/lib/social";
-
-const prisma = new PrismaClient();
 
 async function main() {
   const existing = await prisma.user.findUnique({

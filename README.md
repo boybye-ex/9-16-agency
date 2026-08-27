@@ -6,8 +6,9 @@ Full web platform for vertical ads: AI images, CapCut-style video editing, capti
 
 ```bash
 npm install
-npx prisma migrate dev
-npm run db:seed
+cp .env.example .env
+npm run db:link      # link permanent Prisma Postgres (see docs/DATABASE.md)
+npm run db:deploy    # migrate + seed
 npm run dev
 ```
 
@@ -20,6 +21,17 @@ Open [http://localhost:3000](http://localhost:3000).
 | Agency admin | agency@916adds.com | agency123 |
 | Agency team | team@916adds.com | member123 |
 | Client | client@916adds.com | client123 |
+
+## Database
+
+**Permanent Postgres:** use Prisma Console + `npm run db:link`.  
+Full guide: [docs/DATABASE.md](docs/DATABASE.md)
+
+| Command | Purpose |
+|---------|---------|
+| `npm run db:link` | Connect `.env` to Prisma Postgres |
+| `npm run db:deploy` | Migrate + seed (local or CI) |
+| `npm run db:studio` | Browse data in the browser |
 
 ## Features
 
@@ -34,23 +46,24 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Copy `.env.example` to `.env`:
 
-- `DATABASE_URL` — SQLite by default
+- `DATABASE_URL` — Postgres (set by `npm run db:link` or Neon)
 - `AUTH_SECRET` — session secret
+- `AUTH_URL` — your site URL (e.g. `https://9-16-agency.netlify.app`)
+- `AUTH_TRUST_HOST` — `true`
 - `OPENAI_API_KEY` or `GROQ_API_KEY` — optional live LLM
-- `META_APP_ID` / `META_APP_SECRET` — optional live Meta OAuth
-- `TIKTOK_CLIENT_KEY` / `TIKTOK_CLIENT_SECRET` — optional live TikTok OAuth
+- Meta / TikTok keys — optional live social OAuth
 
 ## Deploy (Netlify)
 
-Production site: [https://9-16-agency.netlify.app](https://9-16-agency.netlify.app)
+Production: [https://9-16-agency.netlify.app](https://9-16-agency.netlify.app)
 
-Build settings live in `netlify.toml` (Next.js plugin + Prisma migrate/seed).
+Build settings in `netlify.toml` (Next.js plugin + Prisma migrate/seed).
 
 Required Netlify environment variables:
 
-- `DATABASE_URL` — Postgres connection string
-- `AUTH_SECRET` — long random string
-- `AUTH_URL` — `https://9-16-agency.netlify.app`
-- `AUTH_TRUST_HOST` — `true`
+- `DATABASE_URL`
+- `AUTH_SECRET`
+- `AUTH_URL`
+- `AUTH_TRUST_HOST=true`
 
-Optional: `OPENAI_API_KEY` / `GROQ_API_KEY`, Meta / TikTok OAuth keys.
+After linking a new database locally, copy `DATABASE_URL` to Netlify and redeploy.
