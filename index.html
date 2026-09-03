@@ -7,44 +7,48 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-CWY14Z6S8G');
     </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9:16 | Vertical Performance</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱️</text></svg>">
     
     <meta name="description" content="We scale South African brands using high-performance 9:16 vertical video ads on TikTok, Reels, and Shorts.">
-    
     <meta property="og:title" content="9:16 | Vertical Ad Performance">
     <meta property="og:description" content="Stop the scroll. We combine creative strategy with ad account math to drive revenue.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
     <meta property="og:url" content="https://the916agency.netlify.app">
-    
     <meta name="twitter:card" content="summary_large_image">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        tiktok: '#25F4EE',
-                        tiktokdark: '#1CD4CE',
+                        navy: '#0a1d4b',
+                        crimson: '#9e0e18',
+                        cream: '#f7ebe0',
+                        midnight: '#171721',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'flicker': 'flicker 3s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        flicker: {
+                            '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': { opacity: '1' },
+                            '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': { opacity: '0.4' },
                         }
                     }
                 }
@@ -53,53 +57,21 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        
-        /* Smooth Gradients & Text */
-        .brand-gradient {
-            background: linear-gradient(90deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #171721;
         }
         
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(20, 20, 23, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .hero-bg {
-            background-color: #050505;
-            background-image: 
-                linear-gradient(rgba(37, 244, 238, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(37, 244, 238, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        /* Utilities */
-        .mobile-menu-active { display: block !important; }
-        
-        /* Initial state for scroll elements */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        /* Final state when visible */
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Digital Clock Logo */
+        /* Digital Clock Style */
         .digital-clock {
             font-family: 'Orbitron', monospace;
-            color: #DC143C;
-            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7), 0 0 20px rgba(220, 20, 60, 0.5), 0 0 30px rgba(220, 20, 60, 0.3);
-            letter-spacing: 2px;
+            color: #9e0e18;
+            text-shadow: 
+                0 0 5px rgba(158, 14, 24, 0.8),
+                0 0 10px rgba(158, 14, 24, 0.6),
+                0 0 20px rgba(158, 14, 24, 0.4),
+                0 0 40px rgba(158, 14, 24, 0.2);
+            letter-spacing: 3px;
         }
         
         .digital-clock-glow {
@@ -107,323 +79,430 @@
         }
         
         @keyframes clock-glow {
-            from { text-shadow: 0 0 10px rgba(220, 20, 60, 0.7), 0 0 20px rgba(220, 20, 60, 0.5); }
-            to { text-shadow: 0 0 15px rgba(220, 20, 60, 0.9), 0 0 30px rgba(220, 20, 60, 0.7), 0 0 40px rgba(220, 20, 60, 0.5); }
+            from { 
+                text-shadow: 
+                    0 0 5px rgba(158, 14, 24, 0.8),
+                    0 0 10px rgba(158, 14, 24, 0.6),
+                    0 0 20px rgba(158, 14, 24, 0.4);
+            }
+            to { 
+                text-shadow: 
+                    0 0 10px rgba(158, 14, 24, 1),
+                    0 0 20px rgba(158, 14, 24, 0.8),
+                    0 0 40px rgba(158, 14, 24, 0.6),
+                    0 0 60px rgba(158, 14, 24, 0.4);
+            }
+        }
+        
+        /* Glass Card with new colors */
+        .glass-card {
+            background: rgba(10, 29, 75, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(158, 14, 24, 0.2);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(158, 14, 24, 0.5);
+        }
+        
+        /* Hero Background */
+        .hero-bg {
+            background-color: #171721;
+            background-image: 
+                linear-gradient(rgba(158, 14, 24, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(158, 14, 24, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Scanlines effect */
+        .scanlines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Digital text style */
+        .digital-text {
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 2px;
+        }
+        
+        /* Accent underline */
+        .accent-underline {
+            position: relative;
+        }
+        
+        .accent-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #9e0e18, transparent);
+        }
+        
+        /* Button glow */
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(158, 14, 24, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
         }
     </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
+<body class="bg-midnight text-cream overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 glass-card border-b border-white/10">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-lg border-b border-crimson/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center z-50">
-                    <span class="text-2xl md:text-3xl font-black digital-clock digital-clock-glow">9:16</span>
+                    <span class="text-3xl md:text-4xl font-black digital-clock digital-clock-glow">9:16</span>
                 </div>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#method" class="hover:text-tiktok transition px-3 py-2 rounded-md text-sm font-medium">The Method</a>
-                        <a href="#pricing" class="hover:text-tiktok transition px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
-                        <a href="#contact" class="bg-tiktok hover:bg-white text-black px-5 py-2.5 rounded-none text-sm font-bold transition uppercase tracking-wide transform hover:-translate-y-0.5">Get Audit</a>
+                        <a href="#method" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">The Method</a>
+                        <a href="#pricing" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Pricing</a>
+                        <a href="#contact" class="bg-crimson hover:bg-cream hover:text-midnight text-cream px-6 py-2.5 text-sm font-bold transition uppercase tracking-wider btn-glow digital-text">Get Audit</a>
                     </div>
                 </div>
 
                 <div class="md:hidden flex items-center z-50">
-                    <button id="mobile-menu-btn" class="text-white hover:text-tiktok focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-cream hover:text-crimson focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
-            <div class="flex flex-col space-y-6">
-                <a href="#method" class="text-2xl font-bold hover:text-tiktok mobile-link">The Method</a>
-                <a href="#pricing" class="text-2xl font-bold hover:text-tiktok mobile-link">Pricing</a>
-                <a href="#contact" class="text-2xl font-bold text-tiktok mobile-link">Get Strategy Audit</a>
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-midnight/98 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
+            <div class="flex flex-col space-y-8">
+                <a href="#method" class="text-2xl font-bold text-cream hover:text-crimson mobile-link digital-text">The Method</a>
+                <a href="#pricing" class="text-2xl font-bold text-cream hover:text-crimson mobile-link digital-text">Pricing</a>
+                <a href="#contact" class="text-2xl font-bold text-crimson mobile-link digital-text">Get Strategy Audit</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero-bg pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative border-b border-white/10 overflow-hidden">
+    <!-- Hero Section -->
+    <section class="hero-bg pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative border-b border-crimson/20 overflow-hidden scanlines">
         <div class="max-w-5xl mx-auto text-center relative z-10">
-            <div class="inline-block mb-6 px-4 py-1.5 border border-zinc-700 bg-zinc-900/80 text-xs font-bold uppercase tracking-widest text-zinc-400 rounded-full animate-fade-in-up">
-                <span class="w-2 h-2 bg-green-500 rounded-full inline-block mr-2 animate-pulse"></span> Johannesburg Based • Global Reach
+            <div class="inline-block mb-6 px-4 py-2 border border-crimson/30 bg-navy/50 text-xs font-bold uppercase tracking-widest text-cream/60 rounded-none digital-text">
+                <span class="w-2 h-2 bg-crimson rounded-full inline-block mr-2 animate-pulse"></span> Johannesburg Based • Global Reach
             </div>
             
-            <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-none text-white">
-                WE OWN THE <br>
-                <span class="text-tiktok">VERTICAL FEED.</span>
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none">
+                <span class="text-cream">WE OWN THE</span> <br>
+                <span class="digital-clock digital-clock-glow text-6xl md:text-9xl">VERTICAL FEED.</span>
             </h1>
             
-            <p class="mt-6 max-w-2xl mx-auto text-xl text-zinc-400 font-light leading-relaxed">
-                The world has shifted to 9:16. We combine <strong class="text-white">High-Performance Creative</strong> with <strong class="text-white">Ad Account Math</strong> to drive revenue in South Africa.
+            <p class="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-cream/60 font-light leading-relaxed">
+                The world has shifted to <span class="digital-clock text-xl">9:16</span>. We combine <strong class="text-cream">High-Performance Creative</strong> with <strong class="text-cream">Ad Account Math</strong> to drive revenue in South Africa.
             </p>
             
             <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#pricing" class="px-8 py-4 bg-tiktok hover:bg-white text-black font-bold text-lg transition uppercase tracking-wide transform hover:scale-105 duration-200">
+                <a href="#pricing" class="px-8 py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream font-bold text-lg transition uppercase tracking-wider btn-glow digital-text">
                     View Packages
                 </a>
-                <a href="#method" class="px-8 py-4 bg-transparent border border-zinc-600 hover:border-white text-white font-semibold text-lg transition uppercase tracking-wide">
+                <a href="#method" class="px-8 py-4 bg-transparent border-2 border-cream/30 hover:border-crimson hover:text-crimson text-cream font-semibold text-lg transition uppercase tracking-wider digital-text">
                     How It Works
                 </a>
             </div>
         </div>
         
-        <div class="absolute top-1/2 left-10 w-64 h-64 bg-tiktok/10 rounded-full blur-[100px] -z-0 animate-pulse-slow"></div>
-        <div class="absolute bottom-0 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] -z-0 animate-pulse-slow"></div>
+        <!-- Background glows -->
+        <div class="absolute top-1/2 left-10 w-64 h-64 bg-crimson/10 rounded-full blur-[120px] -z-0 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-10 w-96 h-96 bg-navy/30 rounded-full blur-[100px] -z-0 animate-pulse-slow"></div>
     </section>
 
-    <div class="border-b border-white/5 bg-black py-10">
+    <!-- Platform Logos -->
+    <div class="border-b border-crimson/10 bg-navy/30 py-12">
         <div class="max-w-7xl mx-auto px-4">
-            <p class="text-center text-zinc-500 text-xs font-bold uppercase tracking-widest mb-8">Powering Growth On</p>
+            <p class="text-center text-cream/40 text-xs font-bold uppercase tracking-widest mb-8 digital-text">Powering Growth On</p>
 
-            <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-50 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-
-                <div class="flex items-center gap-2">
-                    <i class="fa-brands fa-tiktok text-3xl text-white"></i>
-                    <span class="font-bold text-xl">TikTok</span>
+            <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-60 transition-all duration-500 hover:opacity-100">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-tiktok text-3xl text-cream"></i>
+                    <span class="font-bold text-xl text-cream">TikTok</span>
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <i class="fa-brands fa-meta text-3xl text-blue-500"></i>
-                    <span class="font-bold text-xl">Meta Ads</span>
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-meta text-3xl text-cream"></i>
+                    <span class="font-bold text-xl text-cream">Meta Ads</span>
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <i class="fa-brands fa-youtube text-3xl text-red-600"></i>
-                    <span class="font-bold text-xl">Shorts</span>
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-youtube text-3xl text-crimson"></i>
+                    <span class="font-bold text-xl text-cream">Shorts</span>
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M4.5 12l.6 1.8c.2.6.7 1 1.4 1h10c.7 0 1.2-.4 1.4-1l.6-1.8c.2-.6-.2-1.2-.8-1.2H5.3c-.6 0-1 .6-.8 1.2z"/></svg>
-                    <span class="font-bold text-xl">CapCut</span>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-scissors text-3xl text-cream"></i>
+                    <span class="font-bold text-xl text-cream">CapCut</span>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <section id="method" class="py-24 bg-zinc-950 relative overflow-hidden">
+    <!-- Method Section -->
+    <section id="method" class="py-24 bg-midnight relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1">
-                    <h2 class="text-4xl font-bold mb-6 reveal">Why <span class="text-tiktok">"9:16"?</span></h2>
-                    <p class="text-zinc-400 text-lg mb-6">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">
+                        Why <span class="digital-clock digital-clock-glow">"9:16"</span>?
+                    </h2>
+                    <p class="text-cream/60 text-lg mb-6">
                         It's the aspect ratio of the mobile screen. It's how 24 million South Africans consume content daily.
                     </p>
-                    <p class="text-zinc-400 text-lg mb-8">
+                    <p class="text-cream/60 text-lg mb-8">
                         Traditional agencies force TV commercials into this space. They fail. We build specifically for the vertical feed.
                     </p>
 
                     <ul class="space-y-6">
                         <li class="flex items-start group">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">1</div>
+                            <div class="flex-shrink-0 w-10 h-10 border-2 border-crimson flex items-center justify-center mt-1 mr-4 text-crimson font-bold group-hover:bg-crimson group-hover:text-cream transition digital-text">1</div>
                             <div>
-                                <h4 class="font-bold text-white">The Hook</h4>
-                                <span class="text-zinc-400 text-sm">We script the first 2 seconds to stop the scroll immediately.</span>
+                                <h4 class="font-bold text-cream text-lg">The Hook</h4>
+                                <span class="text-cream/50 text-sm">We script the first 2 seconds to stop the scroll immediately.</span>
                             </div>
                         </li>
                         <li class="flex items-start group">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">2</div>
+                            <div class="flex-shrink-0 w-10 h-10 border-2 border-crimson flex items-center justify-center mt-1 mr-4 text-crimson font-bold group-hover:bg-crimson group-hover:text-cream transition digital-text">2</div>
                             <div>
-                                <h4 class="font-bold text-white">Native UGC Style</h4>
-                                <span class="text-zinc-400 text-sm">Content that looks like it belongs on the platform, not a glossy ad.</span>
+                                <h4 class="font-bold text-cream text-lg">Native UGC Style</h4>
+                                <span class="text-cream/50 text-sm">Content that looks like it belongs on the platform, not a glossy ad.</span>
                             </div>
                         </li>
                         <li class="flex items-start group">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full border border-tiktok flex items-center justify-center mt-1 mr-4 text-tiktok text-sm font-bold group-hover:bg-tiktok group-hover:text-black transition">3</div>
+                            <div class="flex-shrink-0 w-10 h-10 border-2 border-crimson flex items-center justify-center mt-1 mr-4 text-crimson font-bold group-hover:bg-crimson group-hover:text-cream transition digital-text">3</div>
                             <div>
-                                <h4 class="font-bold text-white">Scale Architecture</h4>
-                                <span class="text-zinc-400 text-sm">Ad account structures designed for the SA market to find buyers.</span>
+                                <h4 class="font-bold text-cream text-lg">Scale Architecture</h4>
+                                <span class="text-cream/50 text-sm">Ad account structures designed for the SA market to find buyers.</span>
                             </div>
                         </li>
                     </ul>
                 </div>
 
+                <!-- Phone Mockup -->
                 <div class="relative order-1 md:order-2 animate-float">
-                    <div class="aspect-[9/16] max-w-sm mx-auto bg-black border-[8px] border-zinc-800 rounded-[3rem] overflow-hidden shadow-2xl shadow-tiktok/20 relative z-10">
+                    <div class="aspect-[9/16] max-w-sm mx-auto bg-midnight border-4 border-navy rounded-[3rem] overflow-hidden shadow-2xl shadow-crimson/20 relative z-10">
                         
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 bg-zinc-800 rounded-b-xl z-20"></div>
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-7 bg-navy rounded-b-2xl z-20"></div>
 
-                        <div class="absolute inset-0 bg-zinc-900 flex flex-col">
-                            <div class="flex-1 bg-zinc-800 relative flex items-center justify-center overflow-hidden group">
+                        <div class="absolute inset-0 bg-navy/50 flex flex-col">
+                            <div class="flex-1 relative flex items-center justify-center overflow-hidden group">
                                 
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-midnight/90 z-10 pointer-events-none"></div>
                                 
-                                <video id="phone-video" class="absolute inset-0 w-full h-full object-cover opacity-90" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
+                                <video id="phone-video" class="absolute inset-0 w-full h-full object-cover opacity-80" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
                                     <source src="https://player.vimeo.com/external/459389137.sd.mp4?s=954d5b7468137350cb4be1297d26dfa76cb404c1&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
                                 </video>
 
-                                <button id="play-btn" class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center z-20 hover:scale-110 hover:bg-tiktok hover:text-black transition duration-300 cursor-pointer">
-                                    <i id="play-icon" class="fa-solid fa-pause text-white text-2xl ml-0.5"></i>
+                                <button id="play-btn" class="w-16 h-16 border-2 border-crimson bg-midnight/50 backdrop-blur-sm flex items-center justify-center z-20 hover:scale-110 hover:bg-crimson transition duration-300 cursor-pointer">
+                                    <i id="play-icon" class="fa-solid fa-pause text-crimson hover:text-cream text-2xl"></i>
                                 </button>
                             
-                                <div class="absolute right-4 bottom-24 flex flex-col gap-6 text-white z-20 items-center">
+                                <div class="absolute right-4 bottom-24 flex flex-col gap-6 text-cream z-20 items-center">
                                     <div class="flex flex-col items-center gap-1">
-                                        <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                        <div class="w-10 h-10 bg-navy/80 backdrop-blur flex items-center justify-center hover:bg-crimson transition cursor-pointer">
                                             <i class="fa-solid fa-heart"></i>
                                         </div>
-                                        <span class="text-xs font-bold">4.2k</span>
+                                        <span class="text-xs font-bold digital-text">4.2k</span>
                                     </div>
                                     
                                     <div class="flex flex-col items-center gap-1">
-                                        <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                        <div class="w-10 h-10 bg-navy/80 backdrop-blur flex items-center justify-center hover:bg-crimson transition cursor-pointer">
                                             <i class="fa-solid fa-comment-dots"></i>
                                         </div>
-                                        <span class="text-xs font-bold">204</span>
+                                        <span class="text-xs font-bold digital-text">204</span>
                                     </div>
                                     
-                                    <div class="w-10 h-10 rounded-full bg-zinc-800/80 backdrop-blur flex items-center justify-center hover:bg-tiktok hover:text-black transition cursor-pointer">
+                                    <div class="w-10 h-10 bg-navy/80 backdrop-blur flex items-center justify-center hover:bg-crimson transition cursor-pointer">
                                         <i class="fa-solid fa-share"></i>
                                     </div>
                                 </div>
 
                                 <div class="absolute bottom-6 left-4 z-20 max-w-[70%] text-left pointer-events-none">
-                                    <div class="bg-white/20 backdrop-blur-md px-2 py-1 rounded mb-2 inline-block text-[10px] font-bold uppercase text-white">Sponsored</div>
-                                    <p class="text-white text-sm font-semibold leading-tight">Stop scrolling! 🛑 This is how we scale brands to R1M+.</p>
+                                    <div class="bg-crimson/80 backdrop-blur-md px-2 py-1 mb-2 inline-block text-[10px] font-bold uppercase text-cream digital-text">Sponsored</div>
+                                    <p class="text-cream text-sm font-semibold leading-tight">Stop scrolling! This is how we scale brands to R1M+.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 border border-crimson/30 -z-10"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 border border-crimson/20 -z-10"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="py-24 bg-black border-t border-zinc-900">
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-navy/20 border-t border-crimson/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal">Transparent Pricing</h2>
-                <p class="text-zinc-400 max-w-2xl mx-auto">We don't bill by the hour. We sell outcomes.</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal text-cream">Transparent <span class="digital-clock">Pricing</span></h2>
+                <p class="text-cream/50 max-w-2xl mx-auto">We don't bill by the hour. We sell outcomes.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 
-                <div class="glass-card reveal p-8 flex flex-col hover:border-zinc-500 transition duration-300">
+                <!-- Tier 1 -->
+                <div class="glass-card reveal p-8 flex flex-col transition duration-300">
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Creative Only</span>
-                        <h3 class="text-2xl font-bold mt-2">The Content Pack</h3>
+                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Creative Only</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">The Content Pack</h3>
                     </div>
-                    <div class="mb-8 border-b border-zinc-800 pb-8">
-                        <span class="text-4xl font-bold text-white">R6,500</span>
-                        <span class="text-zinc-500">/mo</span>
+                    <div class="mb-8 border-b border-crimson/20 pb-8">
+                        <span class="text-4xl font-black text-cream digital-text">R6,500</span>
+                        <span class="text-cream/40">/mo</span>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-400 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> 4x 9:16 Video Assets</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> Scripting & Concepts</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> 1 Revision Round</li>
+                    <ul class="space-y-4 mb-8 flex-1 text-cream/60 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 4x 9:16 Video Assets</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Scripting & Concepts</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 1 Revision Round</li>
                     </ul>
-                    <a href="#contact" class="w-full py-4 border border-zinc-700 hover:bg-white hover:text-black text-center text-sm font-bold uppercase tracking-wider transition">Start Creative</a>
+                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Start Creative</a>
                 </div>
 
-                <div class="glass-card reveal p-8 flex flex-col border-tiktok shadow-[0_0_30px_rgba(37,244,238,0.15)] relative overflow-hidden transform md:-translate-y-4">
-                    <div class="absolute top-0 right-0 bg-tiktok text-black text-xs font-bold px-3 py-1">POPULAR</div>
+                <!-- Tier 2 - Popular -->
+                <div class="glass-card reveal p-8 flex flex-col border-2 border-crimson shadow-[0_0_40px_rgba(158,14,24,0.2)] relative overflow-hidden transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-crimson text-cream text-xs font-bold px-4 py-1 digital-text">POPULAR</div>
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-tiktok uppercase tracking-widest">Creative + Ads</span>
-                        <h3 class="text-2xl font-bold mt-2">Full Stack Scale</h3>
+                        <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Creative + Ads</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">Full Stack Scale</h3>
                     </div>
-                    <div class="mb-8 border-b border-zinc-800 pb-8">
-                        <span class="text-4xl font-bold text-white">R18,500</span>
-                        <span class="text-zinc-500">/mo</span>
+                    <div class="mb-8 border-b border-crimson/30 pb-8">
+                        <span class="text-4xl font-black text-cream digital-text">R18,500</span>
+                        <span class="text-cream/40">/mo</span>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-300 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> <strong>Everything in Content Pack</strong></li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Full Ad Account Management</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Pixel Setup & Tracking</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-tiktok mr-3"></i> Weekly Reporting</li>
+                    <ul class="space-y-4 mb-8 flex-1 text-cream/70 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> <strong>Everything in Content Pack</strong></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Full Ad Account Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Pixel Setup & Tracking</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Weekly Reporting</li>
                     </ul>
-                    <a href="#contact" class="w-full py-4 bg-tiktok hover:bg-white text-black text-center text-sm font-bold uppercase tracking-wider transition hover:shadow-lg">Partner With Us</a>
+                    <a href="#contact" class="w-full py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream text-center text-sm font-bold uppercase tracking-wider transition btn-glow digital-text">Partner With Us</a>
                 </div>
 
-                <div class="glass-card reveal p-8 flex flex-col hover:border-zinc-500 transition duration-300">
+                <!-- Tier 3 -->
+                <div class="glass-card reveal p-8 flex flex-col transition duration-300">
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Ads Only</span>
-                        <h3 class="text-2xl font-bold mt-2">Growth Engine</h3>
+                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Ads Only</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">Growth Engine</h3>
                     </div>
-                    <div class="mb-8 border-b border-zinc-800 pb-8">
-                        <span class="text-4xl font-bold text-white">R10,000</span>
-                        <span class="text-zinc-500">/mo</span>
-                        <p class="text-xs text-zinc-600 mt-2">+ % of Ad Spend</p>
+                    <div class="mb-8 border-b border-crimson/20 pb-8">
+                        <span class="text-4xl font-black text-cream digital-text">R10,000</span>
+                        <span class="text-cream/40">/mo</span>
+                        <p class="text-xs text-cream/30 mt-2">+ % of Ad Spend</p>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-400 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> Media Buying & Optimization</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-white mr-3"></i> A/B Testing</li>
-                        <li class="flex items-center opacity-50"><i class="fa-solid fa-xmark text-zinc-500 mr-4 ml-1"></i> No Content Creation</li>
+                    <ul class="space-y-4 mb-8 flex-1 text-cream/60 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Media Buying & Optimization</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> A/B Testing</li>
+                        <li class="flex items-center opacity-50"><i class="fa-solid fa-xmark text-cream/30 mr-3"></i> No Content Creation</li>
                     </ul>
-                    <a href="#contact" class="w-full py-4 border border-zinc-700 hover:bg-white hover:text-black text-center text-sm font-bold uppercase tracking-wider transition">Start Ads</a>
+                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Start Ads</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-zinc-950 relative border-t border-zinc-900">
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-midnight relative border-t border-crimson/10">
         <div class="max-w-4xl mx-auto px-4">
-            <div class="glass-card reveal p-8 md:p-12 rounded-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-tiktok/10 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+            <div class="glass-card reveal p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-crimson/10 rounded-full blur-[80px] -z-10 translate-x-1/3 -translate-y-1/3"></div>
 
                 <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold mb-4">Ready to Dominate the Feed?</h2>
-                    <p class="text-zinc-400">Book your free Strategy Audit. We'll review your current setup and show you where you're losing money.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cream">Ready to <span class="digital-clock">Dominate</span> the Feed?</h2>
+                    <p class="text-cream/50">Book your free Strategy Audit. We'll review your current setup and show you where you're losing money.</p>
                 </div>
 
                 <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
                     
                     <input type="hidden" name="access_key" value="124f905a-6710-4aef-bab9-29efcab492a7">
-                    
                     <input type="hidden" name="subject" value="New Lead from 9:16 Agency Site">
-                    
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Name</label>
-                            <input type="text" name="name" required class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="John Doe">
+                            <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Name</label>
+                            <input type="text" name="name" required class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-4 text-cream focus:outline-none transition" placeholder="John Doe">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Email</label>
-                            <input type="email" name="email" required class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="john@company.com">
+                            <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Email</label>
+                            <input type="email" name="email" required class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-4 text-cream focus:outline-none transition" placeholder="john@company.com">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Website / TikTok Handle</label>
-                        <input type="text" name="website" class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition" placeholder="www.yourbrand.co.za">
+                        <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Website / TikTok Handle</label>
+                        <input type="text" name="website" class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-4 text-cream focus:outline-none transition" placeholder="www.yourbrand.co.za">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Monthly Ad Budget (ZAR)</label>
-                        <select name="budget" class="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-tiktok focus:outline-none transition">
+                        <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Monthly Ad Budget (ZAR)</label>
+                        <select name="budget" class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-4 text-cream focus:outline-none transition">
                             <option value="5k-15k">R5,000 - R15,000</option>
                             <option value="15k-50k">R15,000 - R50,000</option>
                             <option value="50k+">R50,000+</option>
                         </select>
                     </div>
                     
-                    <button type="submit" id="submitBtn" class="w-full bg-tiktok hover:bg-white text-black font-bold text-lg py-4 transition uppercase tracking-wide mt-4">
+                    <button type="submit" id="submitBtn" class="w-full bg-crimson hover:bg-cream hover:text-midnight text-cream font-bold text-lg py-4 transition uppercase tracking-wider mt-4 btn-glow digital-text">
                         Request Audit
                     </button>
                     
                     <div id="result" class="text-center text-sm font-bold mt-4 hidden"></div>
 
-                    <p class="text-center text-zinc-600 text-xs mt-4"><i class="fa-solid fa-lock mr-2"></i> No obligation. 100% Free.</p>
+                    <p class="text-center text-cream/30 text-xs mt-4"><i class="fa-solid fa-lock mr-2"></i> No obligation. 100% Free.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black border-t border-zinc-900 py-12 text-center md:text-left">
+    <!-- Footer -->
+    <footer class="bg-navy/30 border-t border-crimson/10 py-12 text-center md:text-left">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <span class="text-2xl font-black digital-clock">9:16</span>
-                <p class="text-zinc-600 text-sm mt-1">Johannesburg, South Africa</p>
+                <span class="text-3xl font-black digital-clock digital-clock-glow">9:16</span>
+                <p class="text-cream/40 text-sm mt-2">Johannesburg, South Africa</p>
             </div>
             <div class="flex gap-6 mb-4 md:mb-0">
-                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-tiktok text-xl"></i></a>
-                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-cream/40 hover:text-crimson transition"><i class="fa-brands fa-tiktok text-xl"></i></a>
+                <a href="#" class="text-cream/40 hover:text-crimson transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="text-cream/40 hover:text-crimson transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
             </div>
-            <div class="text-zinc-600 text-sm">
+            <div class="text-cream/30 text-sm digital-text">
                 &copy; 2026 9:16
             </div>
         </div>
@@ -438,7 +517,6 @@
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
-            // Toggle Icon
             if(menu.classList.contains('hidden')){
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
@@ -448,7 +526,6 @@
             }
         });
 
-        // Close menu when a link is clicked
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
@@ -470,7 +547,6 @@
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
-            // Change button text to show loading
             submitBtn.innerHTML = "Sending...";
             submitBtn.disabled = true;
 
@@ -488,10 +564,9 @@
                         result.innerHTML = "<span class='text-green-400'>Message sent! We'll be in touch.</span>";
                         result.classList.remove('hidden');
                         submitBtn.innerHTML = "Request Sent ✓";
-                        submitBtn.classList.remove('bg-tiktok');
-                        submitBtn.classList.add('bg-green-500');
+                        submitBtn.classList.remove('bg-crimson');
+                        submitBtn.classList.add('bg-green-600');
                     } else {
-                        console.log(response);
                         result.innerHTML = json.message;
                         result.classList.remove('hidden');
                         submitBtn.innerHTML = originalBtnText;
@@ -499,7 +574,6 @@
                     }
                 })
                 .catch(error => {
-                    console.log(error);
                     result.innerHTML = "Something went wrong!";
                     result.classList.remove('hidden');
                     submitBtn.innerHTML = originalBtnText;
@@ -510,27 +584,24 @@
                     setTimeout(() => {
                         result.style.display = "none";
                         submitBtn.innerHTML = originalBtnText;
-                        submitBtn.classList.add('bg-tiktok');
-                        submitBtn.classList.remove('bg-green-500');
+                        submitBtn.classList.add('bg-crimson');
+                        submitBtn.classList.remove('bg-green-600');
                         submitBtn.disabled = false;
                     }, 5000);
                 });
         });
 
-        // --- VIDEO PLAYER LOGIC ---
+        // Video Player Logic
         const video = document.getElementById('phone-video');
         const playBtn = document.getElementById('play-btn');
         const playIcon = document.getElementById('play-icon');
 
-        // Make sure the icon matches the video state on load
         if (video.paused) {
             playIcon.classList.remove('fa-pause');
             playIcon.classList.add('fa-play');
-            playIcon.classList.add('ml-1'); // Visual centering for play icon
         } else {
             playIcon.classList.remove('fa-play');
             playIcon.classList.add('fa-pause');
-            playIcon.classList.remove('ml-1');
         }
 
         playBtn.addEventListener('click', () => {
@@ -538,28 +609,26 @@
                 video.play();
                 playIcon.classList.remove('fa-play');
                 playIcon.classList.add('fa-pause');
-                playIcon.classList.remove('ml-1');
             } else {
                 video.pause();
                 playIcon.classList.remove('fa-pause');
                 playIcon.classList.add('fa-play');
-                playIcon.classList.add('ml-1');
             }
         });
 
-        // --- SCROLL REVEAL ANIMATION ---
+        // Scroll Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
             root: null,
-            threshold: 0.15, // Trigger when 15% of element is visible
+            threshold: 0.15,
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
