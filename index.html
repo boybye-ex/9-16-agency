@@ -13,12 +13,12 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 9:16 Ad Agency | Vertical Performance</title>
+    <title>9:16 | Vertical Performance</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
     
     <meta name="description" content="We scale South African brands using high-performance 9:16 vertical video ads on TikTok, Reels, and Shorts.">
     
-    <meta property="og:title" content="The 9:16 Agency | Vertical Ad Performance">
+    <meta property="og:title" content="9:16 | Vertical Ad Performance">
     <meta property="og:description" content="Stop the scroll. We combine creative strategy with ad account math to drive revenue.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000">
     <meta property="og:url" content="https://the916agency.netlify.app">
@@ -27,7 +27,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -93,6 +93,23 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Digital Clock Logo */
+        .digital-clock {
+            font-family: 'Orbitron', monospace;
+            color: #DC143C;
+            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7), 0 0 20px rgba(220, 20, 60, 0.5), 0 0 30px rgba(220, 20, 60, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .digital-clock-glow {
+            animation: clock-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes clock-glow {
+            from { text-shadow: 0 0 10px rgba(220, 20, 60, 0.7), 0 0 20px rgba(220, 20, 60, 0.5); }
+            to { text-shadow: 0 0 15px rgba(220, 20, 60, 0.9), 0 0 30px rgba(220, 20, 60, 0.7), 0 0 40px rgba(220, 20, 60, 0.5); }
+        }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
@@ -100,11 +117,8 @@
     <nav class="fixed w-full z-50 glass-card border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-2 z-50">
-                    <div class="border-2 border-white w-5 h-8 rounded-sm relative">
-                        <div class="absolute inset-0 bg-tiktok opacity-20"></div>
-                    </div>
-                    <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-white">THE 9:16 <span class="text-tiktok">AGENCY</span></span>
+                <div class="flex items-center z-50">
+                    <span class="text-2xl md:text-3xl font-black digital-clock digital-clock-glow">9:16</span>
                 </div>
                 
                 <div class="hidden md:block">
@@ -401,7 +415,7 @@
     <footer class="bg-black border-t border-zinc-900 py-12 text-center md:text-left">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <span class="text-xl font-bold tracking-tighter text-white">THE 9:16 <span class="text-tiktok">AGENCY</span></span>
+                <span class="text-2xl font-black digital-clock">9:16</span>
                 <p class="text-zinc-600 text-sm mt-1">Johannesburg, South Africa</p>
             </div>
             <div class="flex gap-6 mb-4 md:mb-0">
@@ -410,7 +424,7 @@
                 <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
             </div>
             <div class="text-zinc-600 text-sm">
-                &copy; 2025 The 9:16 Ad Agency.
+                &copy; 2026 9:16
             </div>
         </div>
     </footer>
