@@ -254,6 +254,55 @@
             color: #9e0e18;
             margin-top: 4px;
         }
+        
+        /* FAQ Accordion Styles */
+        .faq-item {
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active {
+            border-left-color: #9e0e18;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: rgba(10, 29, 75, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(10, 29, 75, 0.6);
+        }
+        
+        .faq-item.active .faq-question {
+            background: rgba(10, 29, 75, 0.7);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: #9e0e18;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(10, 29, 75, 0.2);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px 24px;
+        }
     </style>
 </head>
 <body class="bg-midnight text-cream overflow-x-hidden">
@@ -269,6 +318,7 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#method" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">The Method</a>
+                        <a href="#portfolio" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Our Work</a>
                         <a href="#pricing" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Pricing</a>
                         <a href="#contact" class="bg-crimson hover:bg-cream hover:text-midnight text-cream px-6 py-2.5 text-sm font-bold transition uppercase tracking-wider btn-glow digital-text">Get Audit</a>
                     </div>
@@ -285,6 +335,7 @@
         <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-midnight/98 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
             <div class="flex flex-col space-y-8">
                 <a href="#method" class="text-2xl font-bold text-cream hover:text-crimson mobile-link digital-text">The Method</a>
+                <a href="#portfolio" class="text-2xl font-bold text-cream hover:text-crimson mobile-link digital-text">Our Work</a>
                 <a href="#pricing" class="text-2xl font-bold text-cream hover:text-crimson mobile-link digital-text">Pricing</a>
                 <a href="#contact" class="text-2xl font-bold text-crimson mobile-link digital-text">Get Strategy Audit</a>
             </div>
@@ -314,6 +365,17 @@
                 <a href="#method" class="px-8 py-4 bg-transparent border-2 border-cream/30 hover:border-crimson hover:text-crimson text-cream font-semibold text-lg transition uppercase tracking-wider digital-text">
                     How It Works
                 </a>
+            </div>
+            
+            <!-- Lead Magnet CTA -->
+            <div class="mt-8">
+                <button onclick="openModal('modal-leadmagnet')" class="group inline-flex items-center gap-3 text-cream/60 hover:text-crimson transition">
+                    <span class="w-10 h-10 border border-crimson/50 flex items-center justify-center group-hover:bg-crimson group-hover:border-crimson transition">
+                        <i class="fa-solid fa-download text-crimson group-hover:text-cream transition"></i>
+                    </span>
+                    <span class="text-sm font-medium">Get Free Templates & Checklists</span>
+                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </button>
             </div>
         </div>
         
@@ -447,6 +509,141 @@
                     <div class="absolute -top-4 -right-4 w-24 h-24 border border-crimson/30 -z-10"></div>
                     <div class="absolute -bottom-4 -left-4 w-32 h-32 border border-crimson/20 -z-10"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-navy/20 border-t border-crimson/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal text-cream">Our <span class="digital-clock">Work</span></h2>
+                <p class="text-cream/50 max-w-2xl mx-auto">Scroll-stopping content that drives results. Here's what we've created for brands like yours.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                
+                <!-- Video Card 1 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <!-- Placeholder overlay - remove when adding real video -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <!-- Platform badge -->
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-tiktok text-cream"></i>
+                            <span class="text-cream text-xs font-bold">TikTok</span>
+                        </div>
+                        <!-- Stats badge -->
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                        <!-- 
+                        TO EMBED A TIKTOK VIDEO:
+                        1. Remove the placeholder overlay div above
+                        2. Add: <blockquote class="tiktok-embed" data-video-id="YOUR_VIDEO_ID" style="max-width:100%;min-width:100%;"><script async src="https://www.tiktok.com/embed.js"></script></blockquote>
+                        -->
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-instagram text-cream"></i>
+                            <span class="text-cream text-xs font-bold">Reels</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                        <!-- 
+                        TO EMBED AN INSTAGRAM REEL:
+                        1. Remove the placeholder overlay div above
+                        2. Add: <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/YOUR_REEL_ID/"><script async src="//www.instagram.com/embed.js"></script></blockquote>
+                        -->
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-youtube text-crimson"></i>
+                            <span class="text-cream text-xs font-bold">Shorts</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-tiktok text-cream"></i>
+                            <span class="text-cream text-xs font-bold">TikTok</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 5 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-instagram text-cream"></i>
+                            <span class="text-cream text-xs font-bold">Reels</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 6 -->
+                <div class="glass-card reveal group relative overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-navy/80">
+                            <i class="fa-solid fa-play text-4xl text-crimson/50 mb-4"></i>
+                            <span class="text-cream/40 text-sm digital-text">Coming Soon</span>
+                        </div>
+                        <div class="absolute top-3 left-3 z-20 flex items-center gap-2 bg-midnight/80 backdrop-blur px-3 py-1.5">
+                            <i class="fa-brands fa-youtube text-crimson"></i>
+                            <span class="text-cream text-xs font-bold">Shorts</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20 flex items-center gap-4 text-cream/70 text-xs">
+                            <span><i class="fa-solid fa-eye mr-1"></i>--</span>
+                            <span><i class="fa-solid fa-heart mr-1"></i>--</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -805,6 +1002,206 @@
         </div>
     </div>
 
+    <!-- Lead Magnet Modal -->
+    <div id="modal-leadmagnet" class="modal">
+        <div class="modal-content p-8 md:p-12 max-w-lg">
+            <button class="modal-close" onclick="closeModal('modal-leadmagnet')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-crimson/20 border-2 border-crimson flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-gift text-crimson text-2xl"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-cream">Get Your Free Resources</h2>
+                <p class="text-cream/50 mt-2">Level up your vertical video game with our proven templates and checklists.</p>
+            </div>
+
+            <form id="leadMagnetForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+                <input type="hidden" name="access_key" value="124f905a-6710-4aef-bab9-29efcab492a7">
+                <input type="hidden" name="subject" value="New Lead Magnet Request - 9:16 Agency">
+                <input type="hidden" name="from_name" value="9:16 Lead Magnet">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <!-- Resource Selection -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Choose Your Resources</label>
+                    
+                    <label class="flex items-center gap-3 p-4 bg-navy/30 border border-navy hover:border-crimson/50 cursor-pointer transition group">
+                        <input type="checkbox" name="resource_checklist" value="Content Checklist" class="w-5 h-5 accent-crimson">
+                        <div>
+                            <span class="text-cream font-medium">9:16 Content Checklist</span>
+                            <p class="text-cream/50 text-xs">Complete pre-production to posting guide</p>
+                        </div>
+                    </label>
+                    
+                    <label class="flex items-center gap-3 p-4 bg-navy/30 border border-navy hover:border-crimson/50 cursor-pointer transition group">
+                        <input type="checkbox" name="resource_hooks" value="Hook Templates" class="w-5 h-5 accent-crimson">
+                        <div>
+                            <span class="text-cream font-medium">15 Hook Script Templates</span>
+                            <p class="text-cream/50 text-xs">Copy-paste formulas that stop the scroll</p>
+                        </div>
+                    </label>
+                    
+                    <label class="flex items-center gap-3 p-4 bg-crimson/10 border border-crimson/30 hover:border-crimson cursor-pointer transition group">
+                        <input type="checkbox" name="resource_both" value="Both Resources" class="w-5 h-5 accent-crimson" id="selectBoth">
+                        <div>
+                            <span class="text-cream font-medium">Send Me Both!</span>
+                            <p class="text-crimson/70 text-xs">Best value - get the complete toolkit</p>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Your Name</label>
+                    <input type="text" name="name" required class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-3 text-cream focus:outline-none transition" placeholder="John Doe">
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">Email Address</label>
+                    <input type="email" name="email" required class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-3 text-cream focus:outline-none transition" placeholder="john@company.com">
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-bold uppercase text-cream/40 mb-2 digital-text">WhatsApp (Optional)</label>
+                    <input type="tel" name="whatsapp" class="w-full bg-navy/50 border-2 border-navy hover:border-crimson/50 focus:border-crimson p-3 text-cream focus:outline-none transition" placeholder="+27 XX XXX XXXX">
+                    <p class="text-cream/30 text-xs mt-1">We'll send bonus tips via WhatsApp</p>
+                </div>
+
+                <button type="submit" id="leadMagnetBtn" class="w-full bg-crimson hover:bg-cream hover:text-midnight text-cream font-bold text-lg py-4 transition uppercase tracking-wider btn-glow digital-text">
+                    <i class="fa-solid fa-paper-plane mr-2"></i>Send Me The Goods
+                </button>
+                
+                <div id="leadMagnetResult" class="text-center text-sm font-bold mt-4 hidden"></div>
+
+                <p class="text-center text-cream/30 text-xs"><i class="fa-solid fa-shield-check mr-1"></i> No spam. Unsubscribe anytime.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-midnight border-t border-crimson/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal text-cream">Frequently Asked <span class="digital-clock">Questions</span></h2>
+                <p class="text-cream/50 max-w-2xl mx-auto">Everything you need to know before we start working together.</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- FAQ 1 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">What platforms do you create content for?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>We specialize in vertical 9:16 content for TikTok, Instagram Reels, YouTube Shorts, and Facebook Reels. Our content is optimized for each platform's unique algorithm and audience behavior. We also create supporting content like Stories, static posts, and carousels for Instagram and Facebook.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">How long are your contracts?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>We work on a month-to-month basis with no long-term lock-in contracts. We believe in earning your business every month. However, we recommend a minimum 3-month commitment to see meaningful results, as social media growth takes time to compound. Most of our clients stay with us for 12+ months.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">What is the turnaround time for content?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>Standard turnaround is 5-7 business days from brief approval to final delivery. For our Enterprise clients, we offer same-day turnaround for urgent requests. We also batch-create content at the start of each month based on your approved content calendar, so you always have a pipeline of ready-to-post content.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">Do you provide the raw video files?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>Yes! You own all the content we create for you. We deliver final edited videos in platform-optimized formats, plus the raw footage and project files upon request. This means you can repurpose content for other channels, ads, or your website.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">Can I approve content before it goes live?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>Absolutely. Every piece of content goes through our approval workflow before publishing. You'll receive content via a shared drive or project management tool (we use Notion), where you can review, comment, and request changes. Nothing goes live without your green light.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">What if I need more content than my package includes?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>No problem! Additional videos can be purchased at R800 per video for Starter clients, R650 for Growth clients, and R500 for Enterprise clients. If you consistently need more content, we'll recommend upgrading to a package that better fits your needs. We also offer custom packages for high-volume requirements.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">Do you handle influencer partnerships?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>Yes, influencer marketing is included in our Growth and Enterprise packages. We handle everything from identifying the right influencers for your brand, negotiating rates, briefing them on deliverables, reviewing content, and tracking performance. We have relationships with 500+ South African creators across various niches.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">How do you measure success and ROI?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>We track both vanity metrics (views, likes, followers) and business metrics (website traffic, leads, sales). For paid campaigns, we focus on ROAS (Return on Ad Spend), CPA (Cost Per Acquisition), and conversion rates. You'll receive detailed reports showing exactly how your investment is performing. We set clear KPIs at the start of our engagement.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">What industries do you specialize in?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>We work with brands across e-commerce, beauty, fashion, fitness, food & beverage, fintech, and professional services. Our sweet spot is consumer brands looking to scale through short-form video. We've also had success with B2B brands humanizing their presence on social media. If you're unsure if we're a fit, book a free audit and we'll give you an honest assessment.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="faq-item glass-card">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span class="text-cream font-semibold text-lg">How do we communicate during the project?</span>
+                        <i class="fa-solid fa-plus faq-icon text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-cream/70">
+                        <p>Communication depends on your package. Starter clients get email support and a monthly strategy call. Growth clients get a dedicated WhatsApp group with 24-hour response times and bi-weekly calls. Enterprise clients get direct access to their account manager via WhatsApp/Slack with same-day responses and weekly strategy sessions. We adapt to your preferred communication style.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-midnight relative border-t border-crimson/10">
         <div class="max-w-4xl mx-auto px-4">
@@ -1030,6 +1427,145 @@
                     modal.classList.remove('active');
                     document.body.style.overflow = '';
                 });
+            }
+        });
+
+        // FAQ Accordion Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item if it wasn't already active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Lead Magnet Form Handling
+        const leadMagnetForm = document.getElementById('leadMagnetForm');
+        const leadMagnetResult = document.getElementById('leadMagnetResult');
+        const leadMagnetBtn = document.getElementById('leadMagnetBtn');
+        const leadMagnetBtnText = leadMagnetBtn.innerHTML;
+
+        // Select Both checkbox logic
+        const selectBothCheckbox = document.getElementById('selectBoth');
+        const checklistCheckbox = document.querySelector('input[name="resource_checklist"]');
+        const hooksCheckbox = document.querySelector('input[name="resource_hooks"]');
+
+        selectBothCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                checklistCheckbox.checked = true;
+                hooksCheckbox.checked = true;
+            }
+        });
+
+        [checklistCheckbox, hooksCheckbox].forEach(cb => {
+            cb.addEventListener('change', function() {
+                if (!checklistCheckbox.checked || !hooksCheckbox.checked) {
+                    selectBothCheckbox.checked = false;
+                }
+                if (checklistCheckbox.checked && hooksCheckbox.checked) {
+                    selectBothCheckbox.checked = true;
+                }
+            });
+        });
+
+        leadMagnetForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate at least one resource selected
+            if (!checklistCheckbox.checked && !hooksCheckbox.checked) {
+                leadMagnetResult.innerHTML = "<span class='text-crimson'>Please select at least one resource.</span>";
+                leadMagnetResult.classList.remove('hidden');
+                return;
+            }
+
+            const formData = new FormData(leadMagnetForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            leadMagnetBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin mr-2'></i>Sending...";
+            leadMagnetBtn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    leadMagnetResult.innerHTML = "<span class='text-green-400'><i class='fa-solid fa-check-circle mr-2'></i>Success! Check your email for the resources.</span>";
+                    leadMagnetResult.classList.remove('hidden');
+                    leadMagnetBtn.innerHTML = "<i class='fa-solid fa-check mr-2'></i>Sent!";
+                    leadMagnetBtn.classList.remove('bg-crimson');
+                    leadMagnetBtn.classList.add('bg-green-600');
+                    
+                    // Close modal after delay
+                    setTimeout(() => {
+                        closeModal('modal-leadmagnet');
+                        leadMagnetForm.reset();
+                        leadMagnetBtn.innerHTML = leadMagnetBtnText;
+                        leadMagnetBtn.classList.add('bg-crimson');
+                        leadMagnetBtn.classList.remove('bg-green-600');
+                        leadMagnetBtn.disabled = false;
+                        leadMagnetResult.classList.add('hidden');
+                    }, 3000);
+                } else {
+                    leadMagnetResult.innerHTML = "<span class='text-crimson'>" + json.message + "</span>";
+                    leadMagnetResult.classList.remove('hidden');
+                    leadMagnetBtn.innerHTML = leadMagnetBtnText;
+                    leadMagnetBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                leadMagnetResult.innerHTML = "<span class='text-crimson'>Something went wrong. Please try again.</span>";
+                leadMagnetResult.classList.remove('hidden');
+                leadMagnetBtn.innerHTML = leadMagnetBtnText;
+                leadMagnetBtn.disabled = false;
+            });
+        });
+
+        // Track if lead magnet modal has been shown
+        let leadMagnetShown = sessionStorage.getItem('leadMagnetShown') === 'true';
+
+        // Function to show lead magnet modal (with session check)
+        function showLeadMagnetModal() {
+            if (!leadMagnetShown) {
+                openModal('modal-leadmagnet');
+                leadMagnetShown = true;
+                sessionStorage.setItem('leadMagnetShown', 'true');
+            }
+        }
+
+        // Exit Intent Detection (desktop only)
+        document.addEventListener('mouseout', function(e) {
+            if (e.clientY < 10 && e.relatedTarget === null) {
+                showLeadMagnetModal();
+            }
+        });
+
+        // Scroll-based trigger (60% scroll)
+        let scrollTriggered = false;
+        window.addEventListener('scroll', function() {
+            if (scrollTriggered) return;
+            
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            if (scrollPercent >= 60) {
+                scrollTriggered = true;
+                // Delay slightly to not interrupt reading
+                setTimeout(() => {
+                    showLeadMagnetModal();
+                }, 2000);
             }
         });
     </script>
