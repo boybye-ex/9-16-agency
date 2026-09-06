@@ -175,6 +175,85 @@
         .btn-glow:hover {
             box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
         }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(23, 23, 33, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #0a1d4b 0%, #171721 100%);
+            border: 2px solid rgba(158, 14, 24, 0.3);
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 2px solid rgba(247, 235, 224, 0.3);
+            color: #f7ebe0;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            border-color: #9e0e18;
+            color: #9e0e18;
+        }
+        
+        .service-category {
+            border-left: 3px solid #9e0e18;
+            padding-left: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+        }
+        
+        .service-item i {
+            color: #9e0e18;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body class="bg-midnight text-cream overflow-x-hidden">
@@ -377,71 +456,354 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 reveal text-cream">Transparent <span class="digital-clock">Pricing</span></h2>
-                <p class="text-cream/50 max-w-2xl mx-auto">We don't bill by the hour. We sell outcomes.</p>
+                <p class="text-cream/50 max-w-2xl mx-auto">Full-service social media management & content creation. We don't bill by the hour. We sell outcomes.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 
-                <!-- Tier 1 -->
+                <!-- Tier 1 - Starter -->
                 <div class="glass-card reveal p-8 flex flex-col transition duration-300">
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Creative Only</span>
-                        <h3 class="text-2xl font-bold mt-2 text-cream">The Content Pack</h3>
+                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Starter</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">Content Creator</h3>
                     </div>
-                    <div class="mb-8 border-b border-crimson/20 pb-8">
-                        <span class="text-4xl font-black text-cream digital-text">R6,500</span>
+                    <div class="mb-6 border-b border-crimson/20 pb-6">
+                        <span class="text-4xl font-black text-cream digital-text">R8,500</span>
                         <span class="text-cream/40">/mo</span>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-cream/60 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 4x 9:16 Video Assets</li>
+                    <ul class="space-y-3 mb-6 flex-1 text-cream/60 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 8x 9:16 Video Assets</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Content Strategy & Planning</li>
                         <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Scripting & Concepts</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 1 Revision Round</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Basic Analytics Report</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> 2 Revision Rounds</li>
                     </ul>
-                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Start Creative</a>
+                    <button onclick="openModal('modal-starter')" class="w-full py-3 mb-3 border border-crimson/50 hover:bg-crimson/20 text-cream/70 text-center text-xs font-bold uppercase tracking-wider transition digital-text">
+                        <i class="fa-solid fa-eye mr-2"></i>See Full Details
+                    </button>
+                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Get Started</a>
                 </div>
 
                 <!-- Tier 2 - Popular -->
                 <div class="glass-card reveal p-8 flex flex-col border-2 border-crimson shadow-[0_0_40px_rgba(158,14,24,0.2)] relative overflow-hidden transform md:-translate-y-4">
                     <div class="absolute top-0 right-0 bg-crimson text-cream text-xs font-bold px-4 py-1 digital-text">POPULAR</div>
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Creative + Ads</span>
-                        <h3 class="text-2xl font-bold mt-2 text-cream">Full Stack Scale</h3>
+                        <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Full Service</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">Growth Partner</h3>
                     </div>
-                    <div class="mb-8 border-b border-crimson/30 pb-8">
-                        <span class="text-4xl font-black text-cream digital-text">R18,500</span>
+                    <div class="mb-6 border-b border-crimson/30 pb-6">
+                        <span class="text-4xl font-black text-cream digital-text">R22,500</span>
                         <span class="text-cream/40">/mo</span>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-cream/70 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> <strong>Everything in Content Pack</strong></li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Full Ad Account Management</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Pixel Setup & Tracking</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Weekly Reporting</li>
+                    <ul class="space-y-3 mb-6 flex-1 text-cream/70 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> <strong>Everything in Starter</strong></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Full Social Media Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Paid Ad Campaign Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Community Engagement</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Weekly Performance Reports</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Influencer Outreach</li>
                     </ul>
+                    <button onclick="openModal('modal-growth')" class="w-full py-3 mb-3 border border-crimson/50 hover:bg-crimson/20 text-cream/70 text-center text-xs font-bold uppercase tracking-wider transition digital-text">
+                        <i class="fa-solid fa-eye mr-2"></i>See Full Details
+                    </button>
                     <a href="#contact" class="w-full py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream text-center text-sm font-bold uppercase tracking-wider transition btn-glow digital-text">Partner With Us</a>
                 </div>
 
-                <!-- Tier 3 -->
+                <!-- Tier 3 - Enterprise -->
                 <div class="glass-card reveal p-8 flex flex-col transition duration-300">
                     <div class="mb-4">
-                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Ads Only</span>
-                        <h3 class="text-2xl font-bold mt-2 text-cream">Growth Engine</h3>
+                        <span class="text-xs font-bold text-cream/40 uppercase tracking-widest digital-text">Enterprise</span>
+                        <h3 class="text-2xl font-bold mt-2 text-cream">Scale Machine</h3>
                     </div>
-                    <div class="mb-8 border-b border-crimson/20 pb-8">
-                        <span class="text-4xl font-black text-cream digital-text">R10,000</span>
+                    <div class="mb-6 border-b border-crimson/20 pb-6">
+                        <span class="text-4xl font-black text-cream digital-text">R45,000</span>
                         <span class="text-cream/40">/mo</span>
-                        <p class="text-xs text-cream/30 mt-2">+ % of Ad Spend</p>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-1 text-cream/60 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Media Buying & Optimization</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> A/B Testing</li>
-                        <li class="flex items-center opacity-50"><i class="fa-solid fa-xmark text-cream/30 mr-3"></i> No Content Creation</li>
+                    <ul class="space-y-3 mb-6 flex-1 text-cream/60 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> <strong>Everything in Growth</strong></li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Unlimited Content Creation</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Dedicated Account Manager</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Influencer Campaign Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Advanced Analytics & Insights</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-crimson mr-3"></i> Priority Support</li>
                     </ul>
-                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Start Ads</a>
+                    <button onclick="openModal('modal-enterprise')" class="w-full py-3 mb-3 border border-crimson/50 hover:bg-crimson/20 text-cream/70 text-center text-xs font-bold uppercase tracking-wider transition digital-text">
+                        <i class="fa-solid fa-eye mr-2"></i>See Full Details
+                    </button>
+                    <a href="#contact" class="w-full py-4 border-2 border-cream/30 hover:border-crimson hover:bg-crimson text-cream text-center text-sm font-bold uppercase tracking-wider transition digital-text">Let's Talk</a>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Modal: Starter Package -->
+    <div id="modal-starter" class="modal">
+        <div class="modal-content p-8 md:p-12">
+            <button class="modal-close" onclick="closeModal('modal-starter')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="mb-8">
+                <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Starter Package</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-cream mt-2">Content Creator</h2>
+                <p class="text-cream/50 mt-2">Perfect for brands starting their vertical video journey</p>
+                <div class="mt-4">
+                    <span class="text-4xl font-black text-cream digital-text">R8,500</span>
+                    <span class="text-cream/40">/month</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-video text-crimson mr-2"></i>Content Creation</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>8x 9:16 vertical video assets per month</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Professional scripting & storyboarding</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Hook optimization for first 2 seconds</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Captions & text overlays included</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Trending audio integration</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-lightbulb text-crimson mr-2"></i>Strategy & Planning</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Monthly content calendar</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Content pillar development</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Competitor analysis</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Trend research & recommendations</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-chart-line text-crimson mr-2"></i>Analytics & Reporting</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Monthly performance report</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Engagement metrics tracking</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Content performance insights</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Growth recommendations</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-headset text-crimson mr-2"></i>Support</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>2 revision rounds per video</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Email support (48hr response)</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Monthly strategy call</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-crimson/20 flex flex-col sm:flex-row gap-4">
+                <a href="#contact" class="flex-1 py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream text-center font-bold uppercase tracking-wider transition btn-glow digital-text" onclick="closeModal('modal-starter')">Get Started</a>
+                <button onclick="closeModal('modal-starter')" class="flex-1 py-4 border-2 border-cream/30 hover:border-crimson text-cream text-center font-bold uppercase tracking-wider transition digital-text">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Growth Partner Package -->
+    <div id="modal-growth" class="modal">
+        <div class="modal-content p-8 md:p-12">
+            <button class="modal-close" onclick="closeModal('modal-growth')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="mb-8">
+                <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Full Service Package</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-cream mt-2">Growth Partner</h2>
+                <p class="text-cream/50 mt-2">Complete social media management & advertising solution</p>
+                <div class="mt-4">
+                    <span class="text-4xl font-black text-cream digital-text">R22,500</span>
+                    <span class="text-cream/40">/month</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-video text-crimson mr-2"></i>Content Creation</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>12x 9:16 vertical video assets per month</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Professional scripting & storyboarding</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Hook optimization for first 2 seconds</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Static posts & carousel designs</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Story content creation</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Unlimited revisions</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-mobile-screen text-crimson mr-2"></i>Social Media Management</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Daily posting & scheduling</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Caption writing & hashtag strategy</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Profile optimization</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Bio & highlight management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Cross-platform management</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-bullhorn text-crimson mr-2"></i>Paid Advertising</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Full ad account management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Campaign setup & optimization</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Audience targeting & retargeting</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Pixel setup & conversion tracking</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>A/B testing & creative rotation</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Budget optimization</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-users text-crimson mr-2"></i>Community Building</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Comment & DM management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Community engagement strategy</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Follower growth tactics</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Brand voice development</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Contest & giveaway management</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-chart-pie text-crimson mr-2"></i>Analytics & Reporting</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Weekly performance reports</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>ROI & ROAS tracking</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Competitor benchmarking</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Audience insights & demographics</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Monthly strategy review calls</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-star text-crimson mr-2"></i>Influencer Marketing</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Influencer identification & outreach</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Partnership negotiations</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Campaign coordination</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Performance tracking</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-crimson/20 flex flex-col sm:flex-row gap-4">
+                <a href="#contact" class="flex-1 py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream text-center font-bold uppercase tracking-wider transition btn-glow digital-text" onclick="closeModal('modal-growth')">Partner With Us</a>
+                <button onclick="closeModal('modal-growth')" class="flex-1 py-4 border-2 border-cream/30 hover:border-crimson text-cream text-center font-bold uppercase tracking-wider transition digital-text">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Enterprise Package -->
+    <div id="modal-enterprise" class="modal">
+        <div class="modal-content p-8 md:p-12">
+            <button class="modal-close" onclick="closeModal('modal-enterprise')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="mb-8">
+                <span class="text-xs font-bold text-crimson uppercase tracking-widest digital-text">Enterprise Package</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-cream mt-2">Scale Machine</h2>
+                <p class="text-cream/50 mt-2">Maximum growth with dedicated support & unlimited resources</p>
+                <div class="mt-4">
+                    <span class="text-4xl font-black text-cream digital-text">R45,000</span>
+                    <span class="text-cream/40">/month</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-video text-crimson mr-2"></i>Unlimited Content Creation</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Unlimited 9:16 vertical videos</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Unlimited static posts & carousels</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Daily story content</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Professional scripting & direction</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>UGC-style & polished content mix</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Unlimited revisions</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Same-day turnaround available</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-mobile-screen text-crimson mr-2"></i>Full Social Media Management</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>All platforms managed (TikTok, IG, FB, YouTube)</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Multiple daily posts per platform</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Real-time community management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Crisis management protocol</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Profile & brand consistency</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-bullhorn text-crimson mr-2"></i>Advanced Paid Advertising</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Multi-platform ad management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Advanced audience segmentation</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Lookalike & custom audiences</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Full-funnel campaign strategy</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Dynamic creative optimization</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Attribution modeling</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-star text-crimson mr-2"></i>Influencer Campaign Management</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Full influencer campaign management</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Micro & macro influencer partnerships</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Contract & rate negotiations</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Content approval workflows</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>ROI tracking per influencer</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Affiliate program setup</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-chart-pie text-crimson mr-2"></i>Advanced Analytics & Insights</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Real-time dashboard access</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Daily performance monitoring</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Custom KPI tracking</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Predictive analytics</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Executive summary reports</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Quarterly business reviews</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3 class="text-lg font-bold text-cream mb-4"><i class="fa-solid fa-headset text-crimson mr-2"></i>Priority Support</h3>
+                        <div class="space-y-2 text-cream/70 text-sm">
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Dedicated account manager</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Direct WhatsApp/Slack access</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Same-day response guarantee</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>Weekly strategy calls</span></div>
+                            <div class="service-item"><i class="fa-solid fa-check"></i><span>On-site visits (Gauteng area)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-crimson/20 flex flex-col sm:flex-row gap-4">
+                <a href="#contact" class="flex-1 py-4 bg-crimson hover:bg-cream hover:text-midnight text-cream text-center font-bold uppercase tracking-wider transition btn-glow digital-text" onclick="closeModal('modal-enterprise')">Let's Talk</a>
+                <button onclick="closeModal('modal-enterprise')" class="flex-1 py-4 border-2 border-cream/30 hover:border-crimson text-cream text-center font-bold uppercase tracking-wider transition digital-text">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-midnight relative border-t border-crimson/10">
@@ -637,6 +999,39 @@
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
     </script>
 </body>
 </html>
