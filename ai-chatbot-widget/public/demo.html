@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lead Chatbot - Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(37, 244, 238, 0.1);
+            border: 1px solid rgba(37, 244, 238, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #25F4EE;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #25F4EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            border-color: rgba(37, 244, 238, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: rgba(37, 244, 238, 0.05);
+            border: 1px solid rgba(37, 244, 238, 0.2);
+            border-radius: 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #000;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #25F4EE;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+            white-space: pre;
+        }
+
+        .prompt {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+        }
+
+        .prompt p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .prompt span {
+            color: #25F4EE;
+        }
+
+        .pricing-hint {
+            margin-top: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(37, 244, 238, 0.1), rgba(37, 244, 238, 0.02));
+            border-radius: 16px;
+            border: 1px solid rgba(37, 244, 238, 0.2);
+        }
+
+        .pricing-hint h3 {
+            color: #25F4EE;
+            margin-bottom: 10px;
+        }
+
+        .pricing-hint ul {
+            list-style: none;
+            color: #ccc;
+        }
+
+        .pricing-hint li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pricing-hint li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-hint strong {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="badge">🤖 AI-Powered Lead Qualification</div>
+        
+        <h1>Turn Website Visitors Into<br>Qualified Leads 24/7</h1>
+        
+        <p class="subtitle">
+            An intelligent chatbot that engages visitors, asks the right questions, 
+            and delivers qualified leads directly to your inbox — while you sleep.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Natural Conversations</h3>
+                <p>Powered by GPT-4, the chatbot holds natural conversations that feel human, not robotic.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Smart Qualification</h3>
+                <p>Automatically scores leads based on budget, timeline, and intent. Focus on hot leads.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Lead Scoring</h3>
+                <p>Each lead gets a 1-10 score so you know exactly who to call first.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Notifications</h3>
+                <p>Get notified via email, Slack, or webhook the moment a hot lead comes in.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>Fully Customizable</h3>
+                <p>Match your brand colors, customize the greeting, and tailor questions to your business.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Optimized</h3>
+                <p>Works perfectly on all devices. Capture leads wherever your visitors are.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Easy 2-Minute Setup</h2>
+            <p>Just add this code before your closing &lt;/body&gt; tag:</p>
+            <div class="code-block">
+                <code>&lt;script&gt;
+  window.ChatbotConfig = {
+    apiUrl: 'https://your-api-url.com',
+    primaryColor: '#25F4EE',
+    companyName: 'Your Company Name',
+    greeting: "Hey! 👋 How can I help you today?"
+  };
+&lt;/script&gt;
+&lt;script src="https://your-api-url.com/widget.js"&gt;&lt;/script&gt;</code>
+            </div>
+        </div>
+
+        <div class="pricing-hint">
+            <h3>💰 What You Can Charge Clients</h3>
+            <ul>
+                <li><strong>Setup Fee:</strong> R15,000 - R30,000 ($800 - $1,600 USD)</li>
+                <li><strong>Monthly Maintenance:</strong> R3,000 - R5,000 ($160 - $270 USD)</li>
+                <li><strong>Custom Integrations:</strong> R5,000 - R15,000 ($270 - $800 USD)</li>
+                <li><strong>White-Label Version:</strong> R50,000+ ($2,700+ USD)</li>
+            </ul>
+        </div>
+
+        <div class="prompt">
+            <p>👈 <span>Click the chat button</span> in the bottom right to try it out!</p>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <script>
+        window.ChatbotConfig = {
+            apiUrl: window.location.origin,
+            primaryColor: '#25F4EE',
+            companyName: 'The 9:16 Agency',
+            greeting: "Hey! 👋 I'm here to help you grow with vertical video ads. What brings you here today?"
+        };
+    </script>
+    <script src="/widget.js"></script>
+</body>
+</html>
