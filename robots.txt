@@ -1,5 +1,5 @@
 # robots.txt for 9:16 Agency
-# https://916.agency/
+# https://boybye-ex.github.io/9-16-agency/
 
 # Allow all crawlers to access the site
 User-agent: *
@@ -10,7 +10,7 @@ Disallow: /.git/
 Disallow: /.github/
 
 # Sitemap location
-Sitemap: https://916.agency/sitemap.xml
+Sitemap: https://boybye-ex.github.io/9-16-agency/sitemap.xml
 
 # Crawl-delay (optional - prevents aggressive crawling)
 Crawl-delay: 1

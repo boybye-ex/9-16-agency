@@ -363,5 +363,5 @@ Post on different days or platforms to test which performs best. Double down on 
 
 ---
 
-*Created by 9:16 Agency | www.916.agency*
+*Created by 9:16 Agency | boybye-ex.github.io/9-16-agency*
 *The Vertical Feed Specialists*
