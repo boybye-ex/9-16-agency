@@ -1,0 +1,11 @@
+# Ignore backend automation code
+automation/
+
+# Ignore git files
+.git/
+.github/
+
+# Ignore development files
+.cursor_rules
+*.md
+!README.md
