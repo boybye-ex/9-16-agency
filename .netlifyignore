@@ -1,11 +1,7 @@
-# Ignore backend automation code
+# Ignore backend automation code (not needed for website)
 automation/
 
-# Ignore git files
+# Ignore git and development files
 .git/
 .github/
-
-# Ignore development files
 .cursor_rules
-*.md
-!README.md

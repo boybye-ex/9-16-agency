@@ -2,10 +2,7 @@
 # This is a static site - no build step required
 
 [build]
-  # No build command needed - static HTML files
-  command = "echo 'Static site - no build required'"
-  
-  # Publish the root directory
+  # Publish the root directory - static site, no build needed
   publish = "."
 
 # Headers for security and caching
