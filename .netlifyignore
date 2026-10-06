@@ -1,7 +1,0 @@
-# Ignore backend automation code (not needed for website)
-automation/
-
-# Ignore git and development files
-.git/
-.github/
-.cursor_rules
