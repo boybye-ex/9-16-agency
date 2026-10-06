@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | 9:16 Agency - Vertical Video Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="View our portfolio of scroll-stopping vertical video content. See how we've helped brands dominate TikTok, Instagram Reels, and YouTube Shorts.">
+    <meta name="keywords" content="vertical video portfolio, TikTok content, Instagram Reels examples, YouTube Shorts agency, social media content">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Our Work | 9:16 Agency">
+    <meta property="og:description" content="Scroll-stopping vertical video content that drives results.">
+    <meta property="og:image" content="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0a1d4b',
+                        crimson: '#9e0e18',
+                        cream: '#f7ebe0',
+                        midnight: '#171721',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #171721;
+        }
+        
+        .digital-clock {
+            font-family: 'Orbitron', monospace;
+            color: #9e0e18;
+            text-shadow: 
+                0 0 5px rgba(158, 14, 24, 0.8),
+                0 0 10px rgba(158, 14, 24, 0.6),
+                0 0 20px rgba(158, 14, 24, 0.4);
+            letter-spacing: 2px;
+        }
+        
+        .digital-text {
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .glass-card {
+            background: rgba(10, 29, 75, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(158, 14, 24, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(158, 14, 24, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(158, 14, 24, 0.2);
+        }
+        
+        .hero-bg {
+            background-color: #171721;
+            background-image: 
+                linear-gradient(rgba(158, 14, 24, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(158, 14, 24, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: #9e0e18;
+            color: #f7ebe0;
+        }
+        
+        .portfolio-item {
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-item.hidden {
+            display: none;
+        }
+        
+        .portfolio-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(158, 14, 24, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
+        }
+
+        .category-badge {
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="hero-bg text-cream min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-lg border-b border-crimson/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-black digital-clock">9:16</a>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Home</a>
+                    <a href="work.html" class="text-crimson px-3 py-2 text-sm font-medium digital-text">Our Work</a>
+                    <a href="index.html#pricing" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Pricing</a>
+                    <a href="index.html#contact" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Contact</a>
+                </div>
+                <a href="index.html#contact" class="hidden md:block bg-crimson hover:bg-cream hover:text-midnight text-cream font-bold text-xs px-4 py-2 uppercase tracking-wider transition digital-text">
+                    Get Started
+                </a>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-cream">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-midnight/95 border-t border-crimson/20">
+            <a href="index.html" class="block px-4 py-3 text-cream hover:text-crimson digital-text">Home</a>
+            <a href="work.html" class="block px-4 py-3 text-crimson digital-text">Our Work</a>
+            <a href="index.html#pricing" class="block px-4 py-3 text-cream hover:text-crimson digital-text">Pricing</a>
+            <a href="index.html#contact" class="block px-4 py-3 text-cream hover:text-crimson digital-text">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-crimson/10 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-0 right-10 w-96 h-96 bg-navy/30 rounded-full blur-[100px] -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Our <span class="digital-clock">Work</span>
+            </h1>
+            <p class="text-cream/60 text-lg max-w-2xl mx-auto mb-8">
+                Scroll-stopping content that drives results. From product photography to viral videos, see what we've created for brands like yours.
+            </p>
+            
+            <!-- Stats -->
+            <div class="flex justify-center gap-8 md:gap-16 mb-12">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold digital-clock">50+</div>
+                    <div class="text-cream/50 text-sm uppercase tracking-wider">Projects</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold digital-clock">10M+</div>
+                    <div class="text-cream/50 text-sm uppercase tracking-wider">Views</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold digital-clock">25+</div>
+                    <div class="text-cream/50 text-sm uppercase tracking-wider">Brands</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="filter-btn active px-4 py-2 bg-navy/50 border border-crimson/30 text-cream text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="all">
+                    All Work
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="fragrance">
+                    Fragrance
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="nutrition">
+                    Nutrition
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="automotive">
+                    Automotive
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="fashion">
+                    Fashion
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="watches">
+                    Watches
+                </button>
+                <button class="filter-btn px-4 py-2 bg-navy/50 border border-crimson/30 text-cream/70 text-sm digital-text uppercase tracking-wider hover:border-crimson" data-filter="3d">
+                    3D/CGI
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="portfolio-grid">
+                
+                <!-- 3D/CGI - Chrome Figures -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="3d">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b3e2-75a7-93f8-0f1bc9fd5bf4.jpg" alt="3D Chrome Art" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">3D/CGI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fashion/Lifestyle -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fashion">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b3f5-7fc8-ae66-315234630856.jpg" alt="Fashion Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fashion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fashion">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b406-716c-8c3f-0a725285f157.jpg" alt="Fashion Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fashion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fashion">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b418-77ea-ada1-b28b5293872f.jpg" alt="Fashion Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fashion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Watches - Poedagar -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="watches">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b42a-70dd-9c10-3ede4b44adb1.jpg" alt="Poedagar Watch" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Watches</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Poedagar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="watches">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b43b-70c8-b1f5-4f27e06c20be.jpg" alt="Poedagar Watch" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Watches</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="watches">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b450-79f8-801a-1d8ebf53d684.jpg" alt="Poedagar Watch Detail" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Watches</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="watches">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b464-7771-a23c-7c28a4a123a8.jpg" alt="Watch Band" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Watches</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fragrance - ONYX, ELYSIAN, GROW, GRECIA -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b476-794e-a73c-080d9ff0149c.jpg" alt="ONYX Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">ONYX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b487-7e63-819a-34625e3caa1c.jpg" alt="ELYSIAN Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">French Avenue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b497-7be0-96a5-14c535a3b44e.jpg" alt="ELYSIAN Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b4aa-72d3-a399-c2f661b23ad6.jpg" alt="ELYSIAN Packaging" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b4be-7112-8527-0e658b0b2d08.jpg" alt="GROW Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">GROW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b4d0-7f30-89ed-91da785ff570.jpg" alt="GROW Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b4e2-76a3-9974-75e0f279742c.jpg" alt="GROW Fragrance" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b4f4-7f88-bf68-dc50c5ab1b75.jpg" alt="GRECIA ROSA" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">GRECIA ROSA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b504-7644-a00e-8cd777fe0f5a.jpg" alt="GRECIA ROSA" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="fragrance">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b514-7bfa-8a2b-c426fe72096a.jpg" alt="GRECIA ROSA Detail" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Fragrance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition - Nutri-Go Protein Bars -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b524-78f8-9d82-abfffa9c2756.jpg" alt="Nutri-Go Milk Tart" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Nutri-Go</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b535-7523-a96a-e45c381ea43c.jpg" alt="Nutri-Go Peppermint" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b546-7499-83cb-c1ba5af27a32.jpg" alt="Nutri-Go Caramel" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b557-7b86-878c-fc521df98816.jpg" alt="Nutri-Go Peanut Butter" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beauty Gen / MojoMe Collagen -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b567-7399-a530-eb70ccf83dff.jpg" alt="Beauty Gen Collagen" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Beauty Gen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b578-7eb2-8d73-337452b23593.jpg" alt="Beauty Gen Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b588-747d-b4ff-baa6422b5ae8.jpg" alt="Beauty Gen Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b597-78f3-ba4c-a2eecadb25b7.jpg" alt="Beauty Gen Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5a9-7afb-a46d-8464bb4e8d02.jpg" alt="Nutri-Go Gym" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5b9-7c58-b782-1eb2b36074f4.jpg" alt="Nutri-Go Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5c8-7041-b5ad-8bf5b880d3a4.jpg" alt="Nutri-Go Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5d8-7a1b-a68d-17ae39416b22.jpg" alt="MojoMe Collagen" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">MojoMe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5e7-7d93-aad8-1d67000275f3.jpg" alt="MojoMe Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b5f6-798a-96b5-6dedd7edbaea.jpg" alt="MojoMe Product" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b606-76d9-8950-6d14682e267d.jpg" alt="Nutri-Go Bar" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vegetology -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b617-7c78-b117-c5b11c43c92c.jpg" alt="Vegetology Calcium" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Vegetology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b626-7963-bfc0-1cf454ae7049.jpg" alt="Vegetology Kids" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b636-7885-8982-c99ba3153b05.jpg" alt="Vegetology VitD3" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bulk Supplements -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b64b-7d49-a2f9-02b8fe89541d.jpg" alt="Bulk Supplements" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Bulk Supplements</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b65a-7a0a-a0a3-528750dbb893.jpg" alt="Bulk Supplements Product" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="nutrition">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b66b-7e9e-83c0-7ddbead9536d.jpg" alt="Bulk Supplements Lifestyle" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Nutrition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automotive - VW Golf R -->
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b67b-760f-8b04-4f5f2ad1f05b.jpg" alt="VW Golf R Logo" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                        <div class="absolute bottom-3 left-3 z-20">
+                            <span class="text-xs text-cream/70">Volkswagen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b68a-7130-a739-1c219cbbe1c9.jpg" alt="VW R Logo" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b69a-7ad5-bd66-61df06b0680f.jpg" alt="VW R Line" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6aa-77a3-946f-0d77094f18f9.jpg" alt="VW R Badge" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6b9-7535-b3f9-54e7c12fdcaa.jpg" alt="Golf R Interior" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6c8-746c-ae0f-2341cdf7e50f.jpg" alt="Golf R Interior" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6d7-7ca3-95ad-ca00723de150.jpg" alt="Golf R Rear Seats" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6e6-7efb-8364-ecd8fc4939c0.jpg" alt="Golf R Console" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b6f6-79cb-bf52-1187bd6e994e.jpg" alt="Golf R Exterior" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b706-753d-80a1-9a6da0a542b9.jpg" alt="Golf R Interior" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b714-7c41-89ec-1f2505989de1.jpg" alt="Golf R Ad" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b723-78d1-8986-2c351bb19436.jpg" alt="Golf R Aerial" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-category="automotive">
+                    <div class="aspect-[9/16] relative">
+                        <img src="assets/portfolio/01a11284-b734-77cb-a90e-4787f5e4fd9b.jpg" alt="Golf R 360 View" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 z-20">
+                            <span class="category-badge bg-midnight/80 backdrop-blur px-2 py-1 text-cream uppercase">Automotive</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-16 bg-navy/20 border-t border-b border-crimson/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Video <span class="digital-clock">Content</span>
+                </h2>
+                <p class="text-cream/50 max-w-xl mx-auto">
+                    Vertical videos that stop the scroll. Coming soon - our latest TikTok, Reels, and Shorts campaigns.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Video Placeholder Cards -->
+                <div class="glass-card overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
+                        <i class="fa-brands fa-tiktok text-4xl text-crimson/50 mb-3"></i>
+                        <span class="text-cream/40 text-sm digital-text">TikTok</span>
+                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                    </div>
+                </div>
+                <div class="glass-card overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
+                        <i class="fa-brands fa-instagram text-4xl text-crimson/50 mb-3"></i>
+                        <span class="text-cream/40 text-sm digital-text">Reels</span>
+                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                    </div>
+                </div>
+                <div class="glass-card overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
+                        <i class="fa-brands fa-youtube text-4xl text-crimson/50 mb-3"></i>
+                        <span class="text-cream/40 text-sm digital-text">Shorts</span>
+                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                    </div>
+                </div>
+                <div class="glass-card overflow-hidden">
+                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-play text-4xl text-crimson/50 mb-3"></i>
+                        <span class="text-cream/40 text-sm digital-text">More</span>
+                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                Ready to create content <span class="digital-clock">like this?</span>
+            </h2>
+            <p class="text-cream/60 text-lg mb-8 max-w-2xl mx-auto">
+                Let's discuss how we can help your brand stand out with scroll-stopping vertical content.
+            </p>
+            <a href="index.html#contact" class="inline-block bg-crimson hover:bg-cream hover:text-midnight text-cream font-bold text-lg px-8 py-4 uppercase tracking-wider transition btn-glow digital-text">
+                Start Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy/30 border-t border-crimson/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <a href="index.html" class="text-2xl font-black digital-clock">9:16</a>
+                    <p class="text-cream/50 text-sm mt-2">Vertical Video Agency | Johannesburg</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="index.html" class="text-cream/50 hover:text-crimson transition text-sm">Home</a>
+                    <a href="work.html" class="text-cream/50 hover:text-crimson transition text-sm">Our Work</a>
+                    <a href="index.html#pricing" class="text-cream/50 hover:text-crimson transition text-sm">Pricing</a>
+                    <a href="index.html#contact" class="text-cream/50 hover:text-crimson transition text-sm">Contact</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="text-cream/50 hover:text-crimson transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="text-cream/50 hover:text-crimson transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-cream/50 hover:text-crimson transition"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-crimson/10">
+                <p class="text-cream/30 text-xs">&copy; 2024 9:16 Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-cream text-3xl hover:text-crimson transition z-10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-cream text-3xl hover:text-crimson transition z-10">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 text-cream text-3xl hover:text-crimson transition z-10">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Portfolio Image" class="max-h-[90vh] max-w-[90vw] object-contain">
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        let currentImageIndex = 0;
+        let visibleImages = [];
+
+        function updateVisibleImages() {
+            visibleImages = Array.from(portfolioItems)
+                .filter(item => !item.classList.contains('hidden'))
+                .map(item => item.querySelector('img').src);
+        }
+
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateVisibleImages();
+                const imgSrc = item.querySelector('img').src;
+                currentImageIndex = visibleImages.indexOf(imgSrc);
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+            lightboxImg.src = visibleImages[currentImageIndex];
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+            lightboxImg.src = visibleImages[currentImageIndex];
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            } else if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+                lightboxImg.src = visibleImages[currentImageIndex];
+            } else if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+                lightboxImg.src = visibleImages[currentImageIndex];
+            }
+        });
+    </script>
+</body>
+</html>
