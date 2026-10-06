@@ -758,50 +758,192 @@
     </section>
 
     <!-- Video Section -->
-    <section class="py-16 bg-navy/20 border-t border-b border-crimson/10">
+    <section id="videos" class="py-16 bg-navy/20 border-t border-b border-crimson/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">
                     Video <span class="digital-clock">Content</span>
                 </h2>
                 <p class="text-cream/50 max-w-xl mx-auto">
-                    Vertical videos that stop the scroll. Coming soon - our latest TikTok, Reels, and Shorts campaigns.
+                    Vertical videos that stop the scroll. TikTok, Reels, and Shorts that drive results.
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Video Placeholder Cards -->
-                <div class="glass-card overflow-hidden">
-                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
-                        <i class="fa-brands fa-tiktok text-4xl text-crimson/50 mb-3"></i>
-                        <span class="text-cream/40 text-sm digital-text">TikTok</span>
-                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+            <!-- Platform Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button class="video-filter-btn active px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-crimson text-cream" data-platform="all">
+                    All Videos
+                </button>
+                <button class="video-filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-midnight/50 text-cream/70 hover:bg-crimson/20 hover:text-cream border border-crimson/20" data-platform="tiktok">
+                    <i class="fa-brands fa-tiktok mr-2"></i>TikTok
+                </button>
+                <button class="video-filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-midnight/50 text-cream/70 hover:bg-crimson/20 hover:text-cream border border-crimson/20" data-platform="instagram">
+                    <i class="fa-brands fa-instagram mr-2"></i>Reels
+                </button>
+                <button class="video-filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-midnight/50 text-cream/70 hover:bg-crimson/20 hover:text-cream border border-crimson/20" data-platform="youtube">
+                    <i class="fa-brands fa-youtube mr-2"></i>Shorts
+                </button>
+            </div>
+            
+            <div id="video-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- TikTok Videos -->
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="tiktok" data-video-id="7234567890123456789" data-embed-type="tiktok">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-midnight to-navy overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-crimson/20 flex items-center justify-center mb-3 group-hover:bg-crimson/40 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-tiktok text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Fragrance Campaign</span>
+                            <span class="text-cream/40 text-xs mt-1">2.4M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-crimson/30">
+                            <div class="h-full bg-crimson w-3/4"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card overflow-hidden">
-                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
-                        <i class="fa-brands fa-instagram text-4xl text-crimson/50 mb-3"></i>
-                        <span class="text-cream/40 text-sm digital-text">Reels</span>
-                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="tiktok" data-video-id="7234567890123456790" data-embed-type="tiktok">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-midnight to-navy overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-crimson/20 flex items-center justify-center mb-3 group-hover:bg-crimson/40 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-tiktok text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Auto Detailing</span>
+                            <span class="text-cream/40 text-xs mt-1">1.8M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-crimson/30">
+                            <div class="h-full bg-crimson w-2/3"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card overflow-hidden">
-                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
-                        <i class="fa-brands fa-youtube text-4xl text-crimson/50 mb-3"></i>
-                        <span class="text-cream/40 text-sm digital-text">Shorts</span>
-                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                
+                <!-- Instagram Reels -->
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="instagram" data-video-id="CxYz123AbCd" data-embed-type="instagram">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center mb-3 group-hover:from-purple-500/50 group-hover:to-pink-500/50 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-instagram text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Fashion Lookbook</span>
+                            <span class="text-cream/40 text-xs mt-1">890K views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-pink-500/30">
+                            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-4/5"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card overflow-hidden">
-                    <div class="aspect-[9/16] relative bg-midnight/50 flex flex-col items-center justify-center">
-                        <i class="fa-solid fa-play text-4xl text-crimson/50 mb-3"></i>
-                        <span class="text-cream/40 text-sm digital-text">More</span>
-                        <span class="text-cream/30 text-xs mt-1">Coming Soon</span>
+                
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="instagram" data-video-id="CxYz456EfGh" data-embed-type="instagram">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center mb-3 group-hover:from-purple-500/50 group-hover:to-pink-500/50 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-instagram text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Watch Showcase</span>
+                            <span class="text-cream/40 text-xs mt-1">1.2M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-pink-500/30">
+                            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-3/4"></div>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- YouTube Shorts -->
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="youtube" data-video-id="dQw4w9WgXcQ" data-embed-type="youtube">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-red-900/50 to-midnight overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-red-600/30 flex items-center justify-center mb-3 group-hover:bg-red-600/50 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-youtube text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Nutrition Brand</span>
+                            <span class="text-cream/40 text-xs mt-1">3.1M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-red-500/30">
+                            <div class="h-full bg-red-600 w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="youtube" data-video-id="abc123XYZ" data-embed-type="youtube">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-red-900/50 to-midnight overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-red-600/30 flex items-center justify-center mb-3 group-hover:bg-red-600/50 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-youtube text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">3D Product Viz</span>
+                            <span class="text-cream/40 text-xs mt-1">2.5M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-red-500/30">
+                            <div class="h-full bg-red-600 w-2/3"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="tiktok" data-video-id="7234567890123456791" data-embed-type="tiktok">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-midnight to-navy overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-crimson/20 flex items-center justify-center mb-3 group-hover:bg-crimson/40 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-tiktok text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Luxury Unboxing</span>
+                            <span class="text-cream/40 text-xs mt-1">950K views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-crimson/30">
+                            <div class="h-full bg-crimson w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item glass-card overflow-hidden group cursor-pointer" data-platform="instagram" data-video-id="CxYz789IjKl" data-embed-type="instagram">
+                    <div class="aspect-[9/16] relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 overflow-hidden">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center mb-3 group-hover:from-purple-500/50 group-hover:to-pink-500/50 transition-all duration-300 group-hover:scale-110">
+                                <i class="fa-solid fa-play text-2xl text-cream ml-1"></i>
+                            </div>
+                            <i class="fa-brands fa-instagram text-2xl text-cream/60 mb-2"></i>
+                            <span class="text-cream/80 text-sm font-medium">Skincare Routine</span>
+                            <span class="text-cream/40 text-xs mt-1">1.5M views</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-pink-500/30">
+                            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-4/5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add More Videos CTA -->
+            <div class="text-center mt-10">
+                <p class="text-cream/40 text-sm mb-4">Want to see more of our work?</p>
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.tiktok.com/@916agency" target="_blank" class="px-5 py-2 rounded-full text-sm font-medium bg-midnight/50 text-cream/70 hover:bg-crimson/20 hover:text-cream border border-crimson/20 transition-all duration-300">
+                        <i class="fa-brands fa-tiktok mr-2"></i>Follow on TikTok
+                    </a>
+                    <a href="https://www.instagram.com/916agency" target="_blank" class="px-5 py-2 rounded-full text-sm font-medium bg-midnight/50 text-cream/70 hover:bg-crimson/20 hover:text-cream border border-crimson/20 transition-all duration-300">
+                        <i class="fa-brands fa-instagram mr-2"></i>Follow on Instagram
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Video Lightbox Modal -->
+    <div id="video-lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-sm">
+        <button id="close-video-lightbox" class="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <i class="fa-solid fa-xmark text-2xl text-white"></i>
+        </button>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div id="video-container" class="w-full max-w-sm aspect-[9/16] bg-midnight rounded-2xl overflow-hidden">
+                <!-- Video embed will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="py-20">
@@ -939,7 +1081,7 @@
             lightboxImg.src = visibleImages[currentImageIndex];
         });
 
-        // Keyboard navigation
+        // Keyboard navigation for image lightbox
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             
@@ -953,6 +1095,116 @@
                 currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
                 lightboxImg.src = visibleImages[currentImageIndex];
             }
+        });
+
+        // Video Section Functionality
+        const videoFilterBtns = document.querySelectorAll('.video-filter-btn');
+        const videoItems = document.querySelectorAll('.video-item');
+        const videoLightbox = document.getElementById('video-lightbox');
+        const videoContainer = document.getElementById('video-container');
+        const closeVideoLightbox = document.getElementById('close-video-lightbox');
+
+        // Video platform filtering
+        videoFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                videoFilterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-crimson', 'text-cream');
+                    b.classList.add('bg-midnight/50', 'text-cream/70', 'border', 'border-crimson/20');
+                });
+                btn.classList.add('active', 'bg-crimson', 'text-cream');
+                btn.classList.remove('bg-midnight/50', 'text-cream/70', 'border', 'border-crimson/20');
+                
+                const platform = btn.dataset.platform;
+                
+                videoItems.forEach(item => {
+                    if (platform === 'all' || item.dataset.platform === platform) {
+                        item.classList.remove('hidden');
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Video lightbox - click to open
+        videoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const videoId = item.dataset.videoId;
+                const embedType = item.dataset.embedType;
+                
+                let embedHtml = '';
+                
+                if (embedType === 'tiktok') {
+                    embedHtml = `
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@916agency/video/${videoId}" 
+                            data-video-id="${videoId}" style="max-width: 100%; min-width: 100%;">
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"><\/script>
+                    `;
+                } else if (embedType === 'instagram') {
+                    embedHtml = `
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/${videoId}/" 
+                            data-instgrm-version="14" style="width:100%;">
+                        </blockquote>
+                        <script async src="//www.instagram.com/embed.js"><\/script>
+                    `;
+                } else if (embedType === 'youtube') {
+                    embedHtml = `
+                        <iframe width="100%" height="100%" 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1" 
+                            title="YouTube video player" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen style="border-radius: 16px;">
+                        </iframe>
+                    `;
+                }
+                
+                videoContainer.innerHTML = embedHtml;
+                videoLightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Reload embed scripts
+                if (embedType === 'tiktok' && window.tiktok) {
+                    window.tiktok.reload();
+                }
+                if (embedType === 'instagram' && window.instgrm) {
+                    window.instgrm.Embeds.process();
+                }
+            });
+        });
+
+        // Close video lightbox
+        function closeVideoModal() {
+            videoLightbox.classList.add('hidden');
+            videoContainer.innerHTML = '';
+            document.body.style.overflow = '';
+        }
+
+        closeVideoLightbox.addEventListener('click', closeVideoModal);
+        
+        videoLightbox.addEventListener('click', (e) => {
+            if (e.target === videoLightbox) {
+                closeVideoModal();
+            }
+        });
+
+        // Keyboard navigation for video lightbox
+        document.addEventListener('keydown', (e) => {
+            if (videoLightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Add transition styles to video items
+        videoItems.forEach(item => {
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
     </script>
 </body>
