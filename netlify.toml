@@ -37,12 +37,17 @@
 
 [[redirects]]
   from = "/portfolio"
-  to = "/work"
+  to = "/work.html"
   status = 301
 
 [[redirects]]
   from = "/our-work"
-  to = "/work"
+  to = "/work.html"
+  status = 301
+
+[[redirects]]
+  from = "/work"
+  to = "/work.html"
   status = 301
 
 # 404 handling
