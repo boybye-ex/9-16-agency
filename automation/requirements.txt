@@ -1,0 +1,35 @@
+# Core dependencies
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Telegram Bot
+python-telegram-bot>=21.0
+
+# OpenAI for content generation
+openai>=1.40.0
+
+# SendGrid for email
+sendgrid>=6.11.0
+
+# Google AI for video generation
+google-generativeai>=0.8.0
+
+# PDF generation
+reportlab>=4.2.0
+weasyprint>=62.0
+
+# Database
+aiosqlite>=0.20.0
+
+# Scheduling
+schedule>=1.2.0
+
+# CLI
+click>=8.1.0
+
+# Email discovery (optional)
+# hunter-io>=1.0.0
+
+# Async support
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.0
