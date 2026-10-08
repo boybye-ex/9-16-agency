@@ -2,6 +2,7 @@
   "title": "French Avenue",
   "subtitle": "Perfume campaigns for French Avenue, grouped by fragrance.",
   "folder": "french-avenue",
+  "concept": true,
   "images": [
     {
       "file": "elysian-01.jpg",

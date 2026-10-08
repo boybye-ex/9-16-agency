@@ -149,6 +149,34 @@
             font-size: 0.75rem;
         }
         
+        .concept-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 3;
+            background: rgba(23, 23, 33, 0.72);
+            color: #f7ebe0;
+            font-size: 9px;
+            letter-spacing: 0.03em;
+            padding: 3px 8px;
+            border-radius: 999px;
+            line-height: 1.2;
+            pointer-events: none;
+            max-width: calc(100% - 16px);
+            white-space: nowrap;
+        }
+        
+        .lightbox-concept {
+            display: none;
+            color: rgba(247, 235, 224, 0.55);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        
+        .lightbox-concept.visible {
+            display: block;
+        }
+        
         .image-group {
             margin: 0 0 1.5rem;
         }
@@ -283,6 +311,7 @@
         </button>
         <div class="absolute bottom-4 left-0 right-0 text-center">
             <p id="lightbox-caption" class="text-cream/80 text-sm px-4"></p>
+            <p id="lightbox-concept" class="lightbox-concept">Concept / spec work, not commissioned by the brand.</p>
             <p id="lightbox-counter" class="text-cream/50 text-xs mt-2"></p>
         </div>
     </div>
@@ -322,6 +351,7 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxConcept = document.getElementById('lightbox-concept');
         const lightboxCounter = document.getElementById('lightbox-counter');
         
         function openLightbox(images, index) {
@@ -342,6 +372,7 @@
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
             lightboxCaption.textContent = img.alt;
+            lightboxConcept.classList.toggle('visible', !!img.concept);
             lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
         }
         
@@ -409,7 +440,7 @@
             items.forEach((item) => {
                 item.addEventListener('click', () => {
                     const visible = Array.from(root.querySelectorAll('.portfolio-item')).filter((el) => el.style.display !== 'none' && el.offsetParent !== null);
-                    const images = visible.map((el) => ({ src: el.dataset.src, alt: el.dataset.alt }));
+                    const images = visible.map((el) => ({ src: el.dataset.src, alt: el.dataset.alt, concept: el.dataset.concept === 'true' }));
                     openLightbox(images, visible.indexOf(item));
                 });
             });
@@ -449,6 +480,7 @@
                         '<div class="mb-8">' +
                             '<h2 class="text-2xl md:text-3xl font-bold text-cream mb-2">' + Portfolio.escapeHtml(shoot.title) + '</h2>' +
                             '<p class="text-cream/50">' + Portfolio.escapeHtml(shoot.subtitle || '') + '</p>' +
+                            (shoot.concept ? '<p class="text-cream/40 text-xs mt-2">Concept / spec work, not commissioned by the brand.</p>' : '') +
                         '</div>' +
                         (lookList.length > 1 ? (
                             '<div class="flex flex-wrap gap-2 mb-6">' +

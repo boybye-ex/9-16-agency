@@ -44,7 +44,8 @@
             .map(function (img) {
                 return Object.assign({}, img, {
                     folder: manifest.folder,
-                    shootTitle: manifest.title
+                    shootTitle: manifest.title,
+                    concept: isConcept(img, manifest)
                 });
             });
         const limit = cap == null ? featured.length : cap;
@@ -97,6 +98,15 @@
         return [{ title: null, images: images }];
     }
 
+    function isConcept(img, shoot) {
+        return !!(img && img.concept) || !!(shoot && shoot.concept);
+    }
+
+    function conceptBadgeHtml(flag) {
+        if (!flag) return '';
+        return '<span class="concept-badge">Concept / spec work</span>';
+    }
+
     function looks(manifest) {
         const values = [];
         (manifest.images || []).forEach(function (img) {
@@ -116,7 +126,11 @@
             const manifestRes = await fetch('work/' + info.folder + '/manifest.json');
             if (!manifestRes.ok) throw new Error('Failed to load ' + info.folder);
             const manifest = await manifestRes.json();
-            shoots.push(Object.assign({}, manifest, info, { folder: info.folder }));
+            const shoot = Object.assign({}, manifest, info, { folder: info.folder });
+            shoot.images = (shoot.images || []).map(function (img) {
+                return Object.assign({}, img, { concept: isConcept(img, shoot) });
+            });
+            shoots.push(shoot);
         }
         return shoots;
     }
@@ -127,12 +141,14 @@
         const look = escapeHtml(img.look || img.fragrance || '');
         const noCrop = !!img.no_crop;
         const landscape = isLandscape(img);
+        const concept = !!img.concept;
         const classes = ['portfolio-item', 'glass-card', extraClass || '', noCrop ? 'no-crop' : '', landscape ? 'is-landscape' : '']
             .filter(Boolean).join(' ');
         return (
-            '<div class="' + classes + '" data-src="' + escapeHtml(src) + '" data-alt="' + alt + '" data-look="' + look + '" data-no-crop="' + (noCrop ? 'true' : 'false') + '">' +
+            '<div class="' + classes + '" data-src="' + escapeHtml(src) + '" data-alt="' + alt + '" data-look="' + look + '" data-no-crop="' + (noCrop ? 'true' : 'false') + '" data-concept="' + (concept ? 'true' : 'false') + '">' +
                 '<div class="portfolio-frame" style="aspect-ratio: ' + aspectCss(img) + ';">' +
                     '<img src="' + escapeHtml(src) + '" alt="' + alt + '" loading="lazy">' +
+                    conceptBadgeHtml(concept) +
                     (look ? '<div class="portfolio-label"><span>' + look + '</span></div>' : '') +
                 '</div>' +
             '</div>'
@@ -154,6 +170,8 @@
         layoutItems: layoutItems,
         subsections: subsections,
         looks: looks,
+        isConcept: isConcept,
+        conceptBadgeHtml: conceptBadgeHtml,
         loadShoots: loadShoots,
         tileHtml: tileHtml,
         groupColsClass: groupColsClass

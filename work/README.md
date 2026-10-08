@@ -49,6 +49,7 @@ Use lowercase letters and hyphens for the folder name. Keep images web-optimised
 - `width`, `height`, `shape`: real pixel size and a hint (`portrait-9x16`, `portrait-4x5`, `portrait-2x3`, `square`, `landscape`). The grid uses these so mixed shapes are not forced into 9:16 tiles.
 - `no_crop`: `true` for posters, collages, or any image whose text/layout must stay intact. These are never cropped in the grid, homepage preview, or lightbox.
 - `group` + `group_order`: keep related images as one contiguous block (side by side). Example: two GROW posters, or a six-poster series. Count drives the columns (2-up vs 3-up on desktop).
+- `concept`: `true` on the shoot labels every image in that shoot as spec work. `true` on a single image labels just that image. A small “Concept / spec work” badge appears on the tile, homepage preview, and lightbox. Shoot-level concept also adds a line under the title on the work page: “Concept / spec work, not commissioned by the brand.” Use this whenever real brand logos or marks appear in unpaid/spec visuals.
 
 ### Step 2: Add one entry to `/work/shoots.json`
 
@@ -75,7 +76,7 @@ That’s it. Commit and push.
 4. **See More** reveals remaining featured images from every shoot
 5. **View Full Gallery** goes to `/work.html`
 
-**Current mix (6 tiles):** earrings 2, watch 1, French Avenue 2, Golf R 1.
+**Current mix (6 tiles):** earrings 1, watch 1, French Avenue 2, Golf R 1, Health & Supplements 1.
 
 ---
 
@@ -83,7 +84,8 @@ That’s it. Commit and push.
 
 | Folder | Title | Images | Homepage cap |
 |--------|-------|--------|--------------|
-| `one-piece-three-looks` | One Piece, Three Looks | 17 | 2 |
+| `one-piece-three-looks` | One Piece, Three Looks | 17 | 1 |
 | `poedagar-watch` | Poedagar Watch | 9 | 1 |
 | `french-avenue` | French Avenue | 35 | 2 |
 | `vw-golf-r` | Volkswagen Golf R | 6 | 1 |
+| `health-supplements` | Health & Supplements | 6 | 1 |

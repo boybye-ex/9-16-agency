@@ -433,6 +433,22 @@
             object-fit: contain;
         }
         
+        #portfolio .concept-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 3;
+            background: rgba(23, 23, 33, 0.72);
+            color: #f7ebe0;
+            font-size: 9px;
+            letter-spacing: 0.03em;
+            padding: 3px 8px;
+            border-radius: 999px;
+            line-height: 1.2;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
         /* FAQ Accordion Styles */
         .faq-item {
             border-left: 3px solid transparent;
@@ -807,6 +823,7 @@
         </button>
         <div class="absolute bottom-4 left-0 right-0 text-center">
             <p id="lightbox-caption" class="text-cream/80 text-sm px-4"></p>
+            <p id="lightbox-concept" class="hidden text-cream/50 text-[11px] mt-1">Concept / spec work, not commissioned by the brand.</p>
             <p id="lightbox-counter" class="text-cream/50 text-xs mt-2"></p>
         </div>
     </div>
@@ -1513,10 +1530,12 @@
                     const title = Portfolio.escapeHtml(img.shootTitle || '');
                     const look = Portfolio.escapeHtml(img.look || img.fragrance || '');
                     const noCrop = img.no_crop ? ' no-crop' : '';
+                    const concept = !!img.concept;
                     return `
-                        <div class="portfolio-item glass-card reveal group relative overflow-hidden cursor-pointer${noCrop}" data-src="${Portfolio.escapeHtml(src)}" data-alt="${alt}">
+                        <div class="portfolio-item glass-card reveal group relative overflow-hidden cursor-pointer${noCrop}" data-src="${Portfolio.escapeHtml(src)}" data-alt="${alt}" data-concept="${concept ? 'true' : 'false'}">
                             <div class="portfolio-frame" style="aspect-ratio: ${Portfolio.aspectCss(img)};">
                                 <img src="${Portfolio.escapeHtml(src)}" alt="${alt}" loading="lazy">
+                                ${Portfolio.conceptBadgeHtml(concept)}
                                 <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
                                     <div>
                                         <span class="text-cream text-xs font-medium block">${title}</span>
@@ -1586,7 +1605,8 @@
                     const items = getAllVisibleItems();
                     currentImages = items.map(el => ({
                         src: el.dataset.src,
-                        alt: el.dataset.alt
+                        alt: el.dataset.alt,
+                        concept: el.dataset.concept === 'true'
                     }));
                     currentIndex = index;
                     updateLightbox();
@@ -1606,6 +1626,7 @@
                     lightboxImg.src = img.src;
                     lightboxImg.alt = img.alt;
                     lightboxCaption.textContent = img.alt;
+                    document.getElementById('lightbox-concept').classList.toggle('hidden', !img.concept);
                     lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
                 }
                 

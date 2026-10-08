@@ -30,6 +30,7 @@
       "width": 1023,
       "height": 1537,
       "no_crop": true,
+      "concept": true,
       "featured": true,
       "featured_order": 2
     },

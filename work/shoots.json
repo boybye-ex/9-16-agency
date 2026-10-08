@@ -3,7 +3,7 @@
     {
       "folder": "one-piece-three-looks",
       "order": 1,
-      "homepage_featured_cap": 2
+      "homepage_featured_cap": 1
     },
     {
       "folder": "poedagar-watch",
@@ -18,6 +18,11 @@
     {
       "folder": "vw-golf-r",
       "order": 4,
+      "homepage_featured_cap": 1
+    },
+    {
+      "folder": "health-supplements",
+      "order": 5,
       "homepage_featured_cap": 1
     }
   ]
