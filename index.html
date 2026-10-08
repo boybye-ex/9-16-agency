@@ -415,6 +415,24 @@
             margin-top: 4px;
         }
         
+        #portfolio-grid,
+        #portfolio-expanded {
+            align-items: start;
+        }
+        
+        #portfolio .portfolio-item .portfolio-frame {
+            position: relative;
+            width: 100%;
+            background: #0a1d4b;
+        }
+        
+        #portfolio .portfolio-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
         /* FAQ Accordion Styles */
         .faq-item {
             border-left: 3px solid transparent;
@@ -750,7 +768,7 @@
             </div>
 
             <!-- Portfolio Grid - Loaded dynamically -->
-            <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+            <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto items-start">
                 <!-- Loading state -->
                 <div class="col-span-full text-center py-8">
                     <i class="fa-solid fa-spinner fa-spin text-3xl text-crimson"></i>
@@ -758,7 +776,7 @@
             </div>
 
             <!-- Expanded Grid (hidden initially) -->
-            <div id="portfolio-expanded" class="hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto mt-4">
+            <div id="portfolio-expanded" class="hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto mt-4 items-start">
             </div>
 
             <!-- Actions -->
@@ -1447,6 +1465,7 @@
         </div>
     </footer>
 
+    <script src="work/gallery.js"></script>
     <script>
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
@@ -1473,52 +1492,35 @@
             const seeMoreBtn = document.getElementById('see-more-btn');
             
             try {
-                const shootsRes = await fetch('work/shoots.json');
-                const shootsData = await shootsRes.json();
+                const shoots = await Portfolio.loadShoots();
+                let initialItems = [];
+                let expandedItems = [];
                 
-                let allFeatured = [];
+                shoots.forEach((shoot) => {
+                    const split = Portfolio.featuredImages(shoot, shoot.homepage_featured_cap);
+                    initialItems = initialItems.concat(split.preview);
+                    expandedItems = expandedItems.concat(split.extra);
+                });
                 
-                for (const shootInfo of shootsData.shoots.sort((a, b) => a.order - b.order)) {
-                    const manifestRes = await fetch(`work/${shootInfo.folder}/manifest.json`);
-                    const manifest = await manifestRes.json();
-                    
-                    const cap = shootInfo.homepage_featured_cap || 6;
-                    const featured = manifest.images
-                        .filter(img => img.featured && img.featured_order !== null)
-                        .sort((a, b) => a.featured_order - b.featured_order)
-                        .slice(0, cap)
-                        .map(img => ({
-                            ...img,
-                            folder: manifest.folder,
-                            shootTitle: manifest.title
-                        }));
-                    
-                    allFeatured = allFeatured.concat(featured);
-                }
-                
-                if (allFeatured.length === 0) {
+                if (initialItems.length === 0) {
                     grid.innerHTML = '<div class="col-span-full text-center py-8 text-cream/50">No portfolio items yet.</div>';
                     return;
                 }
                 
-                const initialCount = 6;
-                const initialItems = allFeatured.slice(0, initialCount);
-                const expandedItems = allFeatured.slice(initialCount);
-                
                 function renderItem(img) {
+                    const src = Portfolio.imageSrc(img.folder, img.file);
+                    const alt = Portfolio.escapeHtml(img.alt || '');
+                    const title = Portfolio.escapeHtml(img.shootTitle || '');
+                    const look = Portfolio.escapeHtml(img.look || img.fragrance || '');
+                    const noCrop = img.no_crop ? ' no-crop' : '';
                     return `
-                        <div class="portfolio-item glass-card reveal group relative overflow-hidden cursor-pointer" data-src="work/${img.folder}/${img.file}" data-alt="${img.alt}">
-                            <div class="aspect-[9/16] relative">
-                                <img 
-                                    src="work/${img.folder}/${img.file}" 
-                                    alt="${img.alt}"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
-                                >
+                        <div class="portfolio-item glass-card reveal group relative overflow-hidden cursor-pointer${noCrop}" data-src="${Portfolio.escapeHtml(src)}" data-alt="${alt}">
+                            <div class="portfolio-frame" style="aspect-ratio: ${Portfolio.aspectCss(img)};">
+                                <img src="${Portfolio.escapeHtml(src)}" alt="${alt}" loading="lazy">
                                 <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
                                     <div>
-                                        <span class="text-cream text-xs font-medium block">${img.shootTitle}</span>
-                                        <span class="text-cream/60 text-[10px]">${img.look}</span>
+                                        <span class="text-cream text-xs font-medium block">${title}</span>
+                                        ${look ? `<span class="text-cream/60 text-[10px]">${look}</span>` : ''}
                                     </div>
                                 </div>
                             </div>

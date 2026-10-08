@@ -65,7 +65,7 @@
         
         .glass-card:hover {
             border-color: rgba(158, 14, 24, 0.5);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(158, 14, 24, 0.2);
         }
         
@@ -86,16 +86,71 @@
             box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
         }
         
+        .gallery-flow {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            align-items: start;
+        }
+        
+        @media (min-width: 640px) {
+            .gallery-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        
+        @media (min-width: 768px) {
+            .gallery-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        
+        @media (min-width: 1024px) {
+            .gallery-flow { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        }
+        
+        .gallery-flow .is-landscape {
+            grid-column: span 2;
+        }
+        
         .portfolio-item {
-            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .portfolio-frame {
+            position: relative;
+            width: 100%;
+            background: #0a1d4b;
         }
         
         .portfolio-item img {
-            transition: transform 0.5s ease;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
-        .portfolio-item:hover img {
-            transform: scale(1.03);
+        .portfolio-item:not(.no-crop) img {
+            object-fit: contain;
+        }
+        
+        .portfolio-label {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 0.75rem;
+            background: linear-gradient(to top, rgba(23, 23, 33, 0.85), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-label {
+            opacity: 1;
+        }
+        
+        .portfolio-label span {
+            color: #f7ebe0;
+            font-size: 0.75rem;
+        }
+        
+        .image-group {
+            margin: 0 0 1.5rem;
         }
         
         .lightbox {
@@ -141,44 +196,29 @@
             background: #9e0e18;
         }
         
-        .lightbox-nav.prev {
-            left: 20px;
-        }
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
         
-        .lightbox-nav.next {
-            right: 20px;
-        }
-        
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-        
+        .filter-btn { transition: all 0.3s ease; }
         .filter-btn.active {
             background-color: #9e0e18;
             color: #f7ebe0;
         }
         
-        .shoot-section {
-            scroll-margin-top: 100px;
-        }
-
+        .shoot-section { scroll-margin-top: 100px; }
+        
         @media (max-width: 640px) {
             .lightbox-nav {
                 width: 40px;
                 height: 40px;
             }
-            .lightbox-nav.prev {
-                left: 10px;
-            }
-            .lightbox-nav.next {
-                right: 10px;
-            }
+            .lightbox-nav.prev { left: 10px; }
+            .lightbox-nav.next { right: 10px; }
         }
     </style>
 </head>
 <body class="hero-bg text-cream min-h-screen">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-lg border-b border-crimson/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -214,7 +254,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="pt-32 pb-16 px-4">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-cream">Our <span class="digital-clock">Work</span></h1>
@@ -222,7 +261,6 @@
         </div>
     </section>
 
-    <!-- Gallery Container -->
     <main id="gallery-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div class="text-center py-12">
             <div class="inline-block">
@@ -232,16 +270,15 @@
         </div>
     </main>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-        <button id="lightbox-close" class="absolute top-4 right-4 text-cream text-3xl hover:text-crimson transition z-10">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-cream text-3xl hover:text-crimson transition z-10" aria-label="Close">
             <i class="fa-solid fa-times"></i>
         </button>
-        <button class="lightbox-nav prev" id="lightbox-prev">
+        <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous image">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
         <img id="lightbox-img" src="" alt="">
-        <button class="lightbox-nav next" id="lightbox-next">
+        <button class="lightbox-nav next" id="lightbox-next" aria-label="Next image">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
         <div class="absolute bottom-4 left-0 right-0 text-center">
@@ -250,7 +287,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-midnight border-t border-crimson/20 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -268,27 +304,18 @@
         </div>
     </footer>
 
+    <script src="work/gallery.js"></script>
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
         
-        mobileMenuBtn?.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-        });
-        
-        mobileMenuClose?.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-        
+        mobileMenuBtn?.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+        mobileMenuClose?.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         mobileMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // Lightbox state
         let currentImages = [];
         let currentIndex = 0;
         
@@ -296,9 +323,6 @@
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
         const lightboxCounter = document.getElementById('lightbox-counter');
-        const lightboxClose = document.getElementById('lightbox-close');
-        const lightboxPrev = document.getElementById('lightbox-prev');
-        const lightboxNext = document.getElementById('lightbox-next');
         
         function openLightbox(images, index) {
             currentImages = images;
@@ -331,9 +355,9 @@
             updateLightbox();
         }
         
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightboxNext.addEventListener('click', nextImage);
-        lightboxPrev.addEventListener('click', prevImage);
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-next').addEventListener('click', nextImage);
+        document.getElementById('lightbox-prev').addEventListener('click', prevImage);
         
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
@@ -346,145 +370,124 @@
             if (e.key === 'ArrowLeft') prevImage();
         });
         
-        // Touch swipe support
         let touchStartX = 0;
-        let touchEndX = 0;
-        
         lightbox.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
-        
         lightbox.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) nextImage();
-                else prevImage();
-            }
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
         }, { passive: true });
 
-        // Load gallery data
-        async function loadGallery() {
-            try {
-                const shootsRes = await fetch('work/shoots.json');
-                const shootsData = await shootsRes.json();
-                
-                const shoots = await Promise.all(
-                    shootsData.shoots
-                        .sort((a, b) => a.order - b.order)
-                        .map(async (shoot) => {
-                            const manifestRes = await fetch(`work/${shoot.folder}/manifest.json`);
-                            return manifestRes.json();
-                        })
-                );
-                
-                renderGallery(shoots);
-            } catch (err) {
-                console.error('Failed to load gallery:', err);
-                document.getElementById('gallery-container').innerHTML = `
-                    <div class="text-center py-12">
-                        <i class="fa-solid fa-exclamation-triangle text-4xl text-crimson mb-4"></i>
-                        <p class="text-cream/50">Failed to load portfolio. Please try again later.</p>
-                    </div>
-                `;
+        function renderFlow(items, folder) {
+            const singles = [];
+            const chunks = [];
+            function flushSingles() {
+                if (!singles.length) return;
+                chunks.push('<div class="gallery-flow">' + singles.join('') + '</div>');
+                singles.length = 0;
             }
+            items.forEach((item) => {
+                if (item.type === 'group') {
+                    flushSingles();
+                    const cols = Portfolio.groupColsClass(item.images.length);
+                    chunks.push(
+                        '<div class="image-group grid gap-4 ' + cols + '" data-group="' + Portfolio.escapeHtml(item.id) + '">' +
+                        item.images.map((img) => Portfolio.tileHtml(img, folder)).join('') +
+                        '</div>'
+                    );
+                } else {
+                    singles.push(Portfolio.tileHtml(item.image, folder));
+                }
+            });
+            flushSingles();
+            return chunks.join('');
         }
-        
-        function renderGallery(shoots) {
-            const container = document.getElementById('gallery-container');
-            container.innerHTML = '';
-            
-            shoots.forEach((shoot, shootIndex) => {
-                const section = document.createElement('section');
-                section.className = 'shoot-section mb-16';
-                section.id = `shoot-${shoot.folder}`;
-                
-                const looks = [...new Set(shoot.images.map(img => img.look))];
-                
-                section.innerHTML = `
-                    <div class="mb-8">
-                        <h2 class="text-2xl md:text-3xl font-bold text-cream mb-2">${shoot.title}</h2>
-                        <p class="text-cream/50">${shoot.subtitle}</p>
-                    </div>
-                    
-                    ${looks.length > 1 ? `
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <button class="filter-btn active px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-crimson text-cream" data-shoot="${shoot.folder}" data-look="all">All</button>
-                        ${looks.map(look => `
-                            <button class="filter-btn px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-midnight/50 text-cream/70 hover:border-crimson/50" data-shoot="${shoot.folder}" data-look="${look}">${look}</button>
-                        `).join('')}
-                    </div>
-                    ` : ''}
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="grid-${shoot.folder}">
-                        ${shoot.images.map((img, imgIndex) => `
-                            <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-look="${img.look}" data-shoot="${shoot.folder}" data-index="${imgIndex}">
-                                <div class="aspect-[9/16] relative">
-                                    <img 
-                                        src="work/${shoot.folder}/${img.file}" 
-                                        alt="${img.alt}"
-                                        class="w-full h-full object-cover"
-                                        loading="lazy"
-                                    >
-                                    <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-3">
-                                        <span class="text-cream text-xs">${img.look}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                
-                container.appendChild(section);
-                
-                // Set up filtering for this shoot
-                const filterBtns = section.querySelectorAll('.filter-btn');
-                const items = section.querySelectorAll('.portfolio-item');
-                
-                filterBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const look = btn.dataset.look;
-                        
-                        filterBtns.forEach(b => {
-                            b.classList.remove('active', 'bg-crimson', 'text-cream');
-                            b.classList.add('bg-midnight/50', 'text-cream/70');
-                        });
-                        btn.classList.add('active', 'bg-crimson', 'text-cream');
-                        btn.classList.remove('bg-midnight/50', 'text-cream/70');
-                        
-                        items.forEach(item => {
-                            if (look === 'all' || item.dataset.look === look) {
-                                item.style.display = '';
-                                item.style.opacity = '0';
-                                item.style.transform = 'scale(0.95)';
-                                requestAnimationFrame(() => {
-                                    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                                    item.style.opacity = '1';
-                                    item.style.transform = 'scale(1)';
-                                });
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-                
-                // Set up lightbox for this shoot's images
-                items.forEach(item => {
-                    item.addEventListener('click', () => {
-                        const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
-                        const images = visibleItems.map(i => ({
-                            src: i.querySelector('img').src,
-                            alt: i.querySelector('img').alt
-                        }));
-                        const clickedIndex = visibleItems.indexOf(item);
-                        openLightbox(images, clickedIndex);
-                    });
+
+        function bindLightbox(root) {
+            const items = root.querySelectorAll('.portfolio-item');
+            items.forEach((item) => {
+                item.addEventListener('click', () => {
+                    const visible = Array.from(root.querySelectorAll('.portfolio-item')).filter((el) => el.style.display !== 'none' && el.offsetParent !== null);
+                    const images = visible.map((el) => ({ src: el.dataset.src, alt: el.dataset.alt }));
+                    openLightbox(images, visible.indexOf(item));
                 });
             });
         }
+
+        async function loadGallery() {
+            try {
+                const shoots = await Portfolio.loadShoots();
+                const container = document.getElementById('gallery-container');
+                container.innerHTML = '';
+                
+                shoots.forEach((shoot) => {
+                    const section = document.createElement('section');
+                    section.className = 'shoot-section mb-20';
+                    section.id = 'shoot-' + shoot.folder;
+                    
+                    const lookList = Portfolio.looks(shoot);
+                    const parts = Portfolio.subsections(shoot);
+                    const hasNamedParts = parts.length > 1 || (parts[0] && parts[0].title);
+                    
+                    let body = '';
+                    if (hasNamedParts) {
+                        body = parts.map((part) => {
+                            const items = Portfolio.layoutItems(part.images);
+                            return (
+                                '<div class="fragrance-block mb-12" data-look="' + Portfolio.escapeHtml(part.title || '') + '">' +
+                                    '<h3 class="text-xl md:text-2xl font-bold text-cream mb-4 digital-text">' + Portfolio.escapeHtml(part.title) + '</h3>' +
+                                    renderFlow(items, shoot.folder) +
+                                '</div>'
+                            );
+                        }).join('');
+                    } else {
+                        body = renderFlow(Portfolio.layoutItems(shoot.images), shoot.folder);
+                    }
+                    
+                    section.innerHTML =
+                        '<div class="mb-8">' +
+                            '<h2 class="text-2xl md:text-3xl font-bold text-cream mb-2">' + Portfolio.escapeHtml(shoot.title) + '</h2>' +
+                            '<p class="text-cream/50">' + Portfolio.escapeHtml(shoot.subtitle || '') + '</p>' +
+                        '</div>' +
+                        (lookList.length > 1 ? (
+                            '<div class="flex flex-wrap gap-2 mb-6">' +
+                                '<button class="filter-btn active px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-crimson text-cream" data-look="all">All</button>' +
+                                lookList.map((look) =>
+                                    '<button class="filter-btn px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-midnight/50 text-cream/70 hover:border-crimson/50" data-look="' + Portfolio.escapeHtml(look) + '">' + Portfolio.escapeHtml(look) + '</button>'
+                                ).join('') +
+                            '</div>'
+                        ) : '') +
+                        '<div class="shoot-body">' + body + '</div>';
+                    
+                    container.appendChild(section);
+                    
+                    const filterBtns = section.querySelectorAll('.filter-btn');
+                    const items = section.querySelectorAll('.portfolio-item');
+                    filterBtns.forEach((btn) => {
+                        btn.addEventListener('click', () => {
+                            const look = btn.dataset.look;
+                            filterBtns.forEach((b) => {
+                                b.classList.remove('active', 'bg-crimson', 'text-cream');
+                                b.classList.add('bg-midnight/50', 'text-cream/70');
+                            });
+                            btn.classList.add('active', 'bg-crimson', 'text-cream');
+                            btn.classList.remove('bg-midnight/50', 'text-cream/70');
+                            items.forEach((item) => {
+                                item.style.display = (look === 'all' || item.dataset.look === look) ? '' : 'none';
+                            });
+                        });
+                    });
+                    
+                    bindLightbox(section);
+                });
+            } catch (err) {
+                console.error('Failed to load gallery:', err);
+                document.getElementById('gallery-container').innerHTML =
+                    '<div class="text-center py-12"><i class="fa-solid fa-exclamation-triangle text-4xl text-crimson mb-4"></i><p class="text-cream/50">Failed to load portfolio. Please try again later.</p></div>';
+            }
+        }
         
-        // Initialize
         loadGallery();
     </script>
 </body>

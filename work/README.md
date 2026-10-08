@@ -4,7 +4,7 @@ This folder contains all photo shoots displayed on the website. The gallery is d
 
 ## How to Add a New Shoot
 
-**Adding a shoot requires only 2 steps:**
+**Adding a shoot requires only two steps: a folder of images plus one line in the index.**
 
 ### Step 1: Create the shoot folder with images + manifest
 
@@ -16,7 +16,7 @@ This folder contains all photo shoots displayed on the website. The gallery is d
 └── manifest.json
 ```
 
-The `manifest.json` should follow this structure:
+Use lowercase letters and hyphens for the folder name. Keep images web-optimised (under ~300KB each).
 
 ```json
 {
@@ -30,92 +30,60 @@ The `manifest.json` should follow this structure:
       "look": "Category or Look Name",
       "featured": true,
       "featured_order": 1
-    },
-    {
-      "file": "image-02.jpg",
-      "alt": "Another descriptive alt text",
-      "look": "Another Category",
-      "featured": false,
-      "featured_order": null
     }
   ]
 }
 ```
 
-**Fields:**
-- `title`: Shoot name shown in the gallery header
-- `subtitle`: Brief description
-- `folder`: Must match the folder name exactly
-- `images`: Array of all images in the shoot
-  - `file`: Image filename
-  - `alt`: Alt text for accessibility (required)
-  - `look`: Category/look name for filtering on the work page
-  - `featured`: Set to `true` for images to show on the homepage preview
-  - `featured_order`: Number for homepage display order (1 = first); `null` for non-featured
+**Required fields**
 
-### Step 2: Add ONE line to `/work/shoots.json`
+- `title` / `subtitle`: shown on the work page
+- `folder`: must match the folder name
+- `images[]`: `file`, `alt`
+- `featured` + `featured_order`: homepage preview picks (1 = first). Use `null` when not featured.
+
+**Optional fields**
+
+- `look`: filter chips on the work page (used by One Piece, Three Looks)
+- `fragrance` + shoot-level `fragrance_order`: named sub-sections (used by French Avenue). You can generalise this with `subsection_field` + `subsection_order` on any shoot.
+- `width`, `height`, `shape`: real pixel size and a hint (`portrait-9x16`, `portrait-4x5`, `portrait-2x3`, `square`, `landscape`). The grid uses these so mixed shapes are not forced into 9:16 tiles.
+- `no_crop`: `true` for posters, collages, or any image whose text/layout must stay intact. These are never cropped in the grid, homepage preview, or lightbox.
+- `group` + `group_order`: keep related images as one contiguous block (side by side). Example: two GROW posters, or a six-poster series. Count drives the columns (2-up vs 3-up on desktop).
+
+### Step 2: Add one entry to `/work/shoots.json`
 
 ```json
 {
-  "shoots": [
-    {
-      "folder": "one-piece-three-looks",
-      "order": 1,
-      "homepage_featured_cap": 4
-    },
-    {
-      "folder": "poedagar-watch",
-      "order": 2,
-      "homepage_featured_cap": 2
-    },
-    {
-      "folder": "your-new-shoot",
-      "order": 3,
-      "homepage_featured_cap": 2
-    }
-  ]
+  "folder": "your-shoot-name",
+  "order": 5,
+  "homepage_featured_cap": 1
 }
 ```
 
-**Fields:**
-- `folder`: Must match the shoot folder name exactly
-- `order`: Display order on the work page (lower = first)
-- `homepage_featured_cap`: Maximum number of featured images from this shoot to show on the homepage preview (controls the mix across shoots)
+- `order`: lower numbers appear first on the work page
+- `homepage_featured_cap`: how many of this shoot’s featured images show in the initial homepage row. Extra featured images appear after **See More**.
 
-That's it! Commit and push — the site will automatically display the new shoot.
+That’s it. Commit and push.
 
 ---
 
 ## How the Homepage Preview Works
 
-The homepage "Our Work" section:
-1. Loads all shoots from `shoots.json` in order
-2. From each shoot, takes up to `homepage_featured_cap` featured images (sorted by `featured_order`)
-3. Shows the first 6 images initially
-4. "See More" reveals additional featured images
-5. "View Full Gallery" links to `/work.html`
+1. Load shoots from `shoots.json` in `order`
+2. From each shoot, take up to `homepage_featured_cap` featured images (`featured_order`)
+3. Show those as the first row (about 6 tiles total)
+4. **See More** reveals remaining featured images from every shoot
+5. **View Full Gallery** goes to `/work.html`
 
-**Example:** With the current config:
-- One Piece, Three Looks: cap 4 → shows images with featured_order 1, 2, 3, 4
-- Poedagar Watch: cap 2 → shows images with featured_order 1, 2
-- Total: 6 images on homepage
-
----
-
-## Tips
-
-- **Featured images**: Choose the most visually striking shots. Mark them `featured: true` and number with `featured_order`.
-- **Homepage cap**: Use `homepage_featured_cap` to control how many images each shoot contributes to the homepage (keeps the mix balanced).
-- **Alt text**: Write descriptive alt text (e.g., "Model in white blazer with gold teardrop earrings" not just "photo 1").
-- **Image optimization**: Keep images under 300KB for fast loading. Tools like [Squoosh](https://squoosh.app/) can help.
-- **Aspect ratio**: Images display in 9:16 vertical format. Portrait/vertical shots work best.
+**Current mix (6 tiles):** earrings 2, watch 1, French Avenue 2, Golf R 1.
 
 ---
 
 ## Current Shoots
 
-| Folder | Title | Images | Homepage Cap |
+| Folder | Title | Images | Homepage cap |
 |--------|-------|--------|--------------|
-| `one-piece-three-looks` | One Piece, Three Looks (Earrings Campaign) | 17 | 3 |
-| `poedagar-watch` | Poedagar Watch (Product Shoot) | 9 | 2 |
-| `elysian-perfume` | Elysian by French Avenue (Perfume Shoot) | 3 | 1 |
+| `one-piece-three-looks` | One Piece, Three Looks | 17 | 2 |
+| `poedagar-watch` | Poedagar Watch | 9 | 1 |
+| `french-avenue` | French Avenue | 35 | 2 |
+| `vw-golf-r` | Volkswagen Golf R | 6 | 1 |
