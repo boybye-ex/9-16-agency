@@ -1,0 +1,71 @@
+{
+  "title": "Poedagar Watch",
+  "subtitle": "Product shoot. Rose-gold case, blue dial.",
+  "folder": "poedagar-watch",
+  "concept": true,
+  "images": [
+    {
+      "file": "poedagar-01.jpg",
+      "alt": "Side profile of the rose-gold watch case and bracelet",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "poedagar-02.jpg",
+      "alt": "Blue dial with glowing lume hands and markers",
+      "look": "Product",
+      "featured": true,
+      "featured_order": 2
+    },
+    {
+      "file": "poedagar-03.jpg",
+      "alt": "Blue dial close-up with rose-gold hands and Poedagar logo",
+      "look": "Product",
+      "featured": true,
+      "featured_order": 1
+    },
+    {
+      "file": "poedagar-04.jpg",
+      "alt": "Macro of the date window and rose-gold markers",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "poedagar-05.jpg",
+      "alt": "Angled view of the blue dial and rose-gold hands",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "poedagar-06.jpg",
+      "alt": "Macro of the crown with the Poedagar crest",
+      "look": "Product",
+      "featured": true,
+      "featured_order": 3
+    },
+    {
+      "file": "poedagar-07.jpg",
+      "alt": "Rose-gold case and bracelet beside the blue dial",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "poedagar-08.jpg",
+      "alt": "Rose-gold bracelet links glowing in backlight",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "poedagar-09.jpg",
+      "alt": "Macro of the brushed rose-gold case edge",
+      "look": "Product",
+      "featured": false,
+      "featured_order": null
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Health & Supplements",
+  "subtitle": "Product and lifestyle visuals for supplement brands.",
+  "folder": "health-supplements",
+  "concept": true,
+  "images": [
+    {
+      "file": "vegetology-calcium-01.jpg",
+      "alt": "Vegetology calcium supplement with fresh fruit",
+      "shape": "portrait",
+      "width": 1122,
+      "height": 1402,
+      "no_crop": true,
+      "concept": true,
+      "featured": true,
+      "featured_order": 2
+    },
+    {
+      "file": "mercury-prime-whey-02.jpg",
+      "alt": "Mercury Prime Whey protein tub",
+      "shape": "portrait",
+      "width": 1140,
+      "height": 1380,
+      "no_crop": true,
+      "concept": true,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "mercury-supa-mass-03.jpg",
+      "alt": "Mercury Supa Mass tub with neon gym lighting",
+      "shape": "square",
+      "width": 1254,
+      "height": 1254,
+      "no_crop": true,
+      "concept": true,
+      "featured": true,
+      "featured_order": 1
+    },
+    {
+      "file": "vitabiotics-wellwoman-max-04.jpg",
+      "alt": "Vitabiotics Wellwoman Max box",
+      "shape": "portrait",
+      "width": 1070,
+      "height": 1470,
+      "no_crop": true,
+      "concept": true,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "vitabiotics-pharmacy-window-05.jpg",
+      "alt": "Vitabiotics products in a pharmacy window",
+      "shape": "portrait",
+      "width": 1086,
+      "height": 1448,
+      "no_crop": true,
+      "concept": true,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "vegetology-lifestyle-06.jpg",
+      "alt": "Vegetology lifestyle shot with snacks and supplements",
+      "shape": "portrait",
+      "width": 1122,
+      "height": 1402,
+      "no_crop": true,
+      "concept": true,
+      "featured": false,
+      "featured_order": null
+    }
+  ]
+}

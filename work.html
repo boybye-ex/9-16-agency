@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | 9:16 Agency - Vertical Video Portfolio</title>
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    
+    <meta name="description" content="View our portfolio of scroll-stopping vertical content. See how we've helped brands dominate TikTok, Instagram Reels, and YouTube Shorts.">
+    <meta name="keywords" content="vertical video portfolio, TikTok content, Instagram Reels examples, YouTube Shorts agency, social media content">
+    
+    <meta property="og:title" content="Our Work | 9:16 Agency">
+    <meta property="og:description" content="Scroll-stopping vertical content that drives results.">
+    <meta property="og:image" content="assets/favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0a1d4b',
+                        crimson: '#9e0e18',
+                        cream: '#f7ebe0',
+                        midnight: '#171721',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #171721;
+        }
+        
+        .digital-clock {
+            font-family: 'Orbitron', monospace;
+            color: #9e0e18;
+            text-shadow: 
+                0 0 5px rgba(158, 14, 24, 0.8),
+                0 0 10px rgba(158, 14, 24, 0.6),
+                0 0 20px rgba(158, 14, 24, 0.4);
+            letter-spacing: 2px;
+        }
+        
+        .digital-text {
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .glass-card {
+            background: rgba(10, 29, 75, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(158, 14, 24, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(158, 14, 24, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(158, 14, 24, 0.2);
+        }
+        
+        .hero-bg {
+            background-color: #171721;
+            background-image: 
+                linear-gradient(rgba(158, 14, 24, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(158, 14, 24, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(158, 14, 24, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
+        }
+        
+        .gallery-flow {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            align-items: start;
+        }
+        
+        @media (min-width: 640px) {
+            .gallery-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        
+        @media (min-width: 768px) {
+            .gallery-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        
+        @media (min-width: 1024px) {
+            .gallery-flow { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        }
+        
+        .gallery-flow .is-landscape {
+            grid-column: span 2;
+        }
+        
+        .portfolio-item {
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .portfolio-frame {
+            position: relative;
+            width: 100%;
+            background: #0a1d4b;
+        }
+        
+        .portfolio-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .portfolio-item:not(.no-crop) img {
+            object-fit: contain;
+        }
+        
+        .portfolio-label {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 0.75rem;
+            background: linear-gradient(to top, rgba(23, 23, 33, 0.85), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-label {
+            opacity: 1;
+        }
+        
+        .portfolio-label span {
+            color: #f7ebe0;
+            font-size: 0.75rem;
+        }
+        
+        .concept-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 3;
+            background: rgba(23, 23, 33, 0.72);
+            color: #f7ebe0;
+            font-size: 9px;
+            letter-spacing: 0.03em;
+            padding: 3px 8px;
+            border-radius: 999px;
+            line-height: 1.2;
+            pointer-events: none;
+            max-width: calc(100% - 16px);
+            white-space: nowrap;
+        }
+        
+        .lightbox-concept {
+            display: none;
+            color: rgba(247, 235, 224, 0.55);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        
+        .lightbox-concept.visible {
+            display: block;
+        }
+        
+        .image-group {
+            margin: 0 0 1.5rem;
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(158, 14, 24, 0.8);
+            color: #f7ebe0;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-nav:hover {
+            background: #9e0e18;
+        }
+        
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
+        
+        .filter-btn { transition: all 0.3s ease; }
+        .filter-btn.active {
+            background-color: #9e0e18;
+            color: #f7ebe0;
+        }
+        
+        .shoot-section { scroll-margin-top: 100px; }
+        
+        @media (max-width: 640px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
+            .lightbox-nav.prev { left: 10px; }
+            .lightbox-nav.next { right: 10px; }
+        }
+    </style>
+</head>
+<body class="hero-bg text-cream min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-lg border-b border-crimson/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center">
+                    <span class="text-3xl font-black digital-clock">9:16</span>
+                </a>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#method" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">The Method</a>
+                        <a href="work.html" class="text-crimson transition px-3 py-2 text-sm font-medium digital-text">Our Work</a>
+                        <a href="index.html#pricing" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Pricing</a>
+                        <a href="index.html#contact" class="bg-crimson hover:bg-cream hover:text-midnight text-cream px-6 py-2.5 text-sm font-bold transition uppercase tracking-wider btn-glow digital-text">Get Audit</a>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-cream">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-midnight/98 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-cream text-3xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="flex flex-col space-y-8">
+                <a href="index.html#method" class="text-2xl font-bold text-cream hover:text-crimson digital-text">The Method</a>
+                <a href="work.html" class="text-2xl font-bold text-crimson digital-text">Our Work</a>
+                <a href="index.html#pricing" class="text-2xl font-bold text-cream hover:text-crimson digital-text">Pricing</a>
+                <a href="index.html#contact" class="text-2xl font-bold text-crimson digital-text">Get Strategy Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-16 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-cream">Our <span class="digital-clock">Work</span></h1>
+            <p class="text-cream/60 max-w-2xl mx-auto text-lg">Scroll-stopping content that drives results. Here's what we've created for brands like yours.</p>
+        </div>
+    </section>
+
+    <main id="gallery-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="text-center py-12">
+            <div class="inline-block">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-crimson"></i>
+            </div>
+            <p class="text-cream/50 mt-4">Loading portfolio...</p>
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-cream text-3xl hover:text-crimson transition z-10" aria-label="Close">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous image">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav next" id="lightbox-next" aria-label="Next image">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="absolute bottom-4 left-0 right-0 text-center">
+            <p id="lightbox-caption" class="text-cream/80 text-sm px-4"></p>
+            <p id="lightbox-concept" class="lightbox-concept">Concept / spec work, not commissioned by the brand.</p>
+            <p id="lightbox-counter" class="text-cream/50 text-xs mt-2"></p>
+        </div>
+    </div>
+
+    <footer class="bg-midnight border-t border-crimson/20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl font-black digital-clock">9:16</span>
+                    <span class="text-cream/50 text-sm">Vertical Video Agency</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-cream/50 hover:text-crimson transition text-sm">Home</a>
+                    <a href="index.html#contact" class="text-cream/50 hover:text-crimson transition text-sm">Contact</a>
+                    <a href="index.html#pricing" class="text-cream/50 hover:text-crimson transition text-sm">Pricing</a>
+                </div>
+                <p class="text-cream/30 text-xs">&copy; 2024 9:16 Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="work/gallery.js"></script>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuBtn?.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+        mobileMenuClose?.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        let currentImages = [];
+        let currentIndex = 0;
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxConcept = document.getElementById('lightbox-concept');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        
+        function openLightbox(images, index) {
+            currentImages = images;
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function updateLightbox() {
+            const img = currentImages[currentIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = img.alt;
+            lightboxConcept.classList.toggle('visible', !!img.concept);
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateLightbox();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateLightbox();
+        }
+        
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-next').addEventListener('click', nextImage);
+        document.getElementById('lightbox-prev').addEventListener('click', prevImage);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+        
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
+        }, { passive: true });
+
+        function renderFlow(items, folder) {
+            const singles = [];
+            const chunks = [];
+            function flushSingles() {
+                if (!singles.length) return;
+                chunks.push('<div class="gallery-flow">' + singles.join('') + '</div>');
+                singles.length = 0;
+            }
+            items.forEach((item) => {
+                if (item.type === 'group') {
+                    flushSingles();
+                    const cols = Portfolio.groupColsClass(item.images.length);
+                    chunks.push(
+                        '<div class="image-group grid gap-4 ' + cols + '" data-group="' + Portfolio.escapeHtml(item.id) + '">' +
+                        item.images.map((img) => Portfolio.tileHtml(img, folder)).join('') +
+                        '</div>'
+                    );
+                } else {
+                    singles.push(Portfolio.tileHtml(item.image, folder));
+                }
+            });
+            flushSingles();
+            return chunks.join('');
+        }
+
+        function bindLightbox(root) {
+            const items = root.querySelectorAll('.portfolio-item');
+            items.forEach((item) => {
+                item.addEventListener('click', () => {
+                    const visible = Array.from(root.querySelectorAll('.portfolio-item')).filter((el) => el.style.display !== 'none' && el.offsetParent !== null);
+                    const images = visible.map((el) => ({ src: el.dataset.src, alt: el.dataset.alt, concept: el.dataset.concept === 'true' }));
+                    openLightbox(images, visible.indexOf(item));
+                });
+            });
+        }
+
+        async function loadGallery() {
+            try {
+                const shoots = await Portfolio.loadShoots();
+                const container = document.getElementById('gallery-container');
+                container.innerHTML = '';
+                
+                shoots.forEach((shoot) => {
+                    const section = document.createElement('section');
+                    section.className = 'shoot-section mb-20';
+                    section.id = 'shoot-' + shoot.folder;
+                    
+                    const lookList = Portfolio.looks(shoot);
+                    const parts = Portfolio.subsections(shoot);
+                    const hasNamedParts = parts.length > 1 || (parts[0] && parts[0].title);
+                    
+                    let body = '';
+                    if (hasNamedParts) {
+                        body = parts.map((part) => {
+                            const items = Portfolio.layoutItems(part.images);
+                            return (
+                                '<div class="fragrance-block mb-12" data-look="' + Portfolio.escapeHtml(part.title || '') + '">' +
+                                    '<h3 class="text-xl md:text-2xl font-bold text-cream mb-4 digital-text">' + Portfolio.escapeHtml(part.title) + '</h3>' +
+                                    renderFlow(items, shoot.folder) +
+                                '</div>'
+                            );
+                        }).join('');
+                    } else {
+                        body = renderFlow(Portfolio.layoutItems(shoot.images), shoot.folder);
+                    }
+                    
+                    section.innerHTML =
+                        '<div class="mb-8">' +
+                            '<h2 class="text-2xl md:text-3xl font-bold text-cream mb-2">' + Portfolio.escapeHtml(shoot.title) + '</h2>' +
+                            '<p class="text-cream/50">' + Portfolio.escapeHtml(shoot.subtitle || '') + '</p>' +
+                            (shoot.concept ? '<p class="text-cream/40 text-xs mt-2">Concept / spec work, not commissioned by the brand.</p>' : '') +
+                        '</div>' +
+                        (lookList.length > 1 ? (
+                            '<div class="flex flex-wrap gap-2 mb-6">' +
+                                '<button class="filter-btn active px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-crimson text-cream" data-look="all">All</button>' +
+                                lookList.map((look) =>
+                                    '<button class="filter-btn px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-midnight/50 text-cream/70 hover:border-crimson/50" data-look="' + Portfolio.escapeHtml(look) + '">' + Portfolio.escapeHtml(look) + '</button>'
+                                ).join('') +
+                            '</div>'
+                        ) : '') +
+                        '<div class="shoot-body">' + body + '</div>';
+                    
+                    container.appendChild(section);
+                    
+                    const filterBtns = section.querySelectorAll('.filter-btn');
+                    const items = section.querySelectorAll('.portfolio-item');
+                    filterBtns.forEach((btn) => {
+                        btn.addEventListener('click', () => {
+                            const look = btn.dataset.look;
+                            filterBtns.forEach((b) => {
+                                b.classList.remove('active', 'bg-crimson', 'text-cream');
+                                b.classList.add('bg-midnight/50', 'text-cream/70');
+                            });
+                            btn.classList.add('active', 'bg-crimson', 'text-cream');
+                            btn.classList.remove('bg-midnight/50', 'text-cream/70');
+                            items.forEach((item) => {
+                                item.style.display = (look === 'all' || item.dataset.look === look) ? '' : 'none';
+                            });
+                        });
+                    });
+                    
+                    bindLightbox(section);
+                });
+            } catch (err) {
+                console.error('Failed to load gallery:', err);
+                document.getElementById('gallery-container').innerHTML =
+                    '<div class="text-center py-12"><i class="fa-solid fa-exclamation-triangle text-4xl text-crimson mb-4"></i><p class="text-cream/50">Failed to load portfolio. Please try again later.</p></div>';
+            }
+        }
+        
+        loadGallery();
+    </script>
+</body>
+</html>

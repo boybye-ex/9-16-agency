@@ -1,0 +1,68 @@
+{
+  "title": "Volkswagen Golf R",
+  "subtitle": "Automotive shoot: exterior, interior and ad poster.",
+  "folder": "vw-golf-r",
+  "images": [
+    {
+      "file": "golf-r-01-top-down.jpg",
+      "alt": "Top-down view of the Volkswagen Golf R",
+      "shape": "landscape",
+      "width": 1402,
+      "height": 1122,
+      "no_crop": false,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "golf-r-02-360-grid.jpg",
+      "alt": "360-degree view mockup collage of the Golf R",
+      "shape": "square",
+      "width": 1254,
+      "height": 1254,
+      "no_crop": true,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "golf-r-03-ad-poster.jpg",
+      "alt": "Ad poster: Engineered to Stand Out",
+      "shape": "portrait",
+      "width": 1023,
+      "height": 1537,
+      "no_crop": true,
+      "concept": true,
+      "featured": true,
+      "featured_order": 2
+    },
+    {
+      "file": "golf-r-04-rear-3-4.jpg",
+      "alt": "Rear three-quarter view of the Golf R",
+      "shape": "portrait",
+      "width": 1086,
+      "height": 1448,
+      "no_crop": false,
+      "featured": true,
+      "featured_order": 1
+    },
+    {
+      "file": "golf-r-05-interior-dash.jpg",
+      "alt": "Golf R interior dashboard",
+      "shape": "portrait",
+      "width": 1086,
+      "height": 1448,
+      "no_crop": false,
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "golf-r-06-interior-rear.jpg",
+      "alt": "Golf R rear interior",
+      "shape": "portrait",
+      "width": 1087,
+      "height": 1447,
+      "no_crop": false,
+      "featured": false,
+      "featured_order": null
+    }
+  ]
+}
