@@ -3,12 +3,17 @@
     {
       "folder": "one-piece-three-looks",
       "order": 1,
-      "homepage_featured_cap": 4
+      "homepage_featured_cap": 3
     },
     {
       "folder": "poedagar-watch",
       "order": 2,
       "homepage_featured_cap": 2
+    },
+    {
+      "folder": "elysian-perfume",
+      "order": 3,
+      "homepage_featured_cap": 1
     }
   ]
 }

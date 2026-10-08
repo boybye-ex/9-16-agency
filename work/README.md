@@ -114,7 +114,8 @@ The homepage "Our Work" section:
 
 ## Current Shoots
 
-| Folder | Title | Homepage Cap |
-|--------|-------|--------------|
-| `one-piece-three-looks` | One Piece, Three Looks (Earrings Campaign) | 4 |
-| `poedagar-watch` | Poedagar Watch (Product Shoot) | 2 |
+| Folder | Title | Images | Homepage Cap |
+|--------|-------|--------|--------------|
+| `one-piece-three-looks` | One Piece, Three Looks (Earrings Campaign) | 17 | 3 |
+| `poedagar-watch` | Poedagar Watch (Product Shoot) | 9 | 2 |
+| `elysian-perfume` | Elysian by French Avenue (Perfume Shoot) | 3 | 1 |
