@@ -1,0 +1,14 @@
+{
+  "shoots": [
+    {
+      "folder": "one-piece-three-looks",
+      "order": 1,
+      "homepage_featured_cap": 4
+    },
+    {
+      "folder": "poedagar-watch",
+      "order": 2,
+      "homepage_featured_cap": 2
+    }
+  ]
+}

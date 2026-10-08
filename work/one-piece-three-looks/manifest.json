@@ -1,0 +1,126 @@
+{
+  "title": "One Piece, Three Looks",
+  "subtitle": "Earrings campaign. Same girl, new plans: Everyday Casual, Evening Elevated, Soft Luxe Neutrals.",
+  "folder": "one-piece-three-looks",
+  "images": [
+    {
+      "file": "optl-01.jpg",
+      "alt": "Full-length everyday casual look, white tee and jeans",
+      "look": "Everyday Casual",
+      "featured": true,
+      "featured_order": 3
+    },
+    {
+      "file": "optl-02.jpg",
+      "alt": "Campaign poster: One Piece, Three Looks (casual)",
+      "look": "Everyday Casual",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-03.jpg",
+      "alt": "Close-up of the gold teardrop crystal earring",
+      "look": "Everyday Casual",
+      "featured": true,
+      "featured_order": 2
+    },
+    {
+      "file": "optl-04.jpg",
+      "alt": "Earring detail over a cream blazer",
+      "look": "Soft Luxe Neutrals",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-05.jpg",
+      "alt": "Profile with earring, soft luxe look",
+      "look": "Soft Luxe Neutrals",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-06.jpg",
+      "alt": "Collage of all three looks",
+      "look": "Campaign",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-07.jpg",
+      "alt": "Evening look collage",
+      "look": "Evening Elevated",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-08.jpg",
+      "alt": "Campaign cover: earrings on stone with title",
+      "look": "Campaign",
+      "featured": true,
+      "featured_order": 1
+    },
+    {
+      "file": "optl-09.jpg",
+      "alt": "Holding the earring up to camera",
+      "look": "Campaign",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-10.jpg",
+      "alt": "Product shot: earrings on stone in sunlight",
+      "look": "Campaign",
+      "featured": true,
+      "featured_order": 6
+    },
+    {
+      "file": "optl-11.jpg",
+      "alt": "Putting on the earrings, collage",
+      "look": "Campaign",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-12.jpg",
+      "alt": "Casual look, earring and sunglasses",
+      "look": "Everyday Casual",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-13.jpg",
+      "alt": "Soft luxe look, seated with book",
+      "look": "Soft Luxe Neutrals",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-14.jpg",
+      "alt": "Poster: three looks side by side, which look wins?",
+      "look": "Campaign",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-15.jpg",
+      "alt": "Full-length soft luxe neutrals look",
+      "look": "Soft Luxe Neutrals",
+      "featured": true,
+      "featured_order": 4
+    },
+    {
+      "file": "optl-16.jpg",
+      "alt": "Casual cafe look with laptop",
+      "look": "Everyday Casual",
+      "featured": false,
+      "featured_order": null
+    },
+    {
+      "file": "optl-17.jpg",
+      "alt": "Evening elevated look with cocktail",
+      "look": "Evening Elevated",
+      "featured": true,
+      "featured_order": 5
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | 9:16 Agency - Vertical Video Portfolio</title>
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    
+    <meta name="description" content="View our portfolio of scroll-stopping vertical content. See how we've helped brands dominate TikTok, Instagram Reels, and YouTube Shorts.">
+    <meta name="keywords" content="vertical video portfolio, TikTok content, Instagram Reels examples, YouTube Shorts agency, social media content">
+    
+    <meta property="og:title" content="Our Work | 9:16 Agency">
+    <meta property="og:description" content="Scroll-stopping vertical content that drives results.">
+    <meta property="og:image" content="assets/favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0a1d4b',
+                        crimson: '#9e0e18',
+                        cream: '#f7ebe0',
+                        midnight: '#171721',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #171721;
+        }
+        
+        .digital-clock {
+            font-family: 'Orbitron', monospace;
+            color: #9e0e18;
+            text-shadow: 
+                0 0 5px rgba(158, 14, 24, 0.8),
+                0 0 10px rgba(158, 14, 24, 0.6),
+                0 0 20px rgba(158, 14, 24, 0.4);
+            letter-spacing: 2px;
+        }
+        
+        .digital-text {
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .glass-card {
+            background: rgba(10, 29, 75, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(158, 14, 24, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(158, 14, 24, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(158, 14, 24, 0.2);
+        }
+        
+        .hero-bg {
+            background-color: #171721;
+            background-image: 
+                linear-gradient(rgba(158, 14, 24, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(158, 14, 24, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(158, 14, 24, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(158, 14, 24, 0.6);
+        }
+        
+        .portfolio-item {
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(158, 14, 24, 0.8);
+            color: #f7ebe0;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-nav:hover {
+            background: #9e0e18;
+        }
+        
+        .lightbox-nav.prev {
+            left: 20px;
+        }
+        
+        .lightbox-nav.next {
+            right: 20px;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: #9e0e18;
+            color: #f7ebe0;
+        }
+        
+        .shoot-section {
+            scroll-margin-top: 100px;
+        }
+
+        @media (max-width: 640px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
+            .lightbox-nav.prev {
+                left: 10px;
+            }
+            .lightbox-nav.next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="hero-bg text-cream min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-lg border-b border-crimson/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center">
+                    <span class="text-3xl font-black digital-clock">9:16</span>
+                </a>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#method" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">The Method</a>
+                        <a href="work.html" class="text-crimson transition px-3 py-2 text-sm font-medium digital-text">Our Work</a>
+                        <a href="index.html#pricing" class="text-cream/70 hover:text-crimson transition px-3 py-2 text-sm font-medium digital-text">Pricing</a>
+                        <a href="index.html#contact" class="bg-crimson hover:bg-cream hover:text-midnight text-cream px-6 py-2.5 text-sm font-bold transition uppercase tracking-wider btn-glow digital-text">Get Audit</a>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-cream">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-midnight/98 backdrop-blur-xl pt-24 px-6 md:hidden text-center">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-cream text-3xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="flex flex-col space-y-8">
+                <a href="index.html#method" class="text-2xl font-bold text-cream hover:text-crimson digital-text">The Method</a>
+                <a href="work.html" class="text-2xl font-bold text-crimson digital-text">Our Work</a>
+                <a href="index.html#pricing" class="text-2xl font-bold text-cream hover:text-crimson digital-text">Pricing</a>
+                <a href="index.html#contact" class="text-2xl font-bold text-crimson digital-text">Get Strategy Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-cream">Our <span class="digital-clock">Work</span></h1>
+            <p class="text-cream/60 max-w-2xl mx-auto text-lg">Scroll-stopping content that drives results. Here's what we've created for brands like yours.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Container -->
+    <main id="gallery-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="text-center py-12">
+            <div class="inline-block">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-crimson"></i>
+            </div>
+            <p class="text-cream/50 mt-4">Loading portfolio...</p>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-cream text-3xl hover:text-crimson transition z-10">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <button class="lightbox-nav prev" id="lightbox-prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav next" id="lightbox-next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="absolute bottom-4 left-0 right-0 text-center">
+            <p id="lightbox-caption" class="text-cream/80 text-sm px-4"></p>
+            <p id="lightbox-counter" class="text-cream/50 text-xs mt-2"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-midnight border-t border-crimson/20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl font-black digital-clock">9:16</span>
+                    <span class="text-cream/50 text-sm">Vertical Video Agency</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-cream/50 hover:text-crimson transition text-sm">Home</a>
+                    <a href="index.html#contact" class="text-cream/50 hover:text-crimson transition text-sm">Contact</a>
+                    <a href="index.html#pricing" class="text-cream/50 hover:text-crimson transition text-sm">Pricing</a>
+                </div>
+                <p class="text-cream/30 text-xs">&copy; 2024 9:16 Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+        
+        mobileMenuClose?.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Lightbox state
+        let currentImages = [];
+        let currentIndex = 0;
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        
+        function openLightbox(images, index) {
+            currentImages = images;
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function updateLightbox() {
+            const img = currentImages[currentIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = img.alt;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateLightbox();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateLightbox();
+        }
+        
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextImage);
+        lightboxPrev.addEventListener('click', prevImage);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+        
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextImage();
+                else prevImage();
+            }
+        }, { passive: true });
+
+        // Load gallery data
+        async function loadGallery() {
+            try {
+                const shootsRes = await fetch('work/shoots.json');
+                const shootsData = await shootsRes.json();
+                
+                const shoots = await Promise.all(
+                    shootsData.shoots
+                        .sort((a, b) => a.order - b.order)
+                        .map(async (shoot) => {
+                            const manifestRes = await fetch(`work/${shoot.folder}/manifest.json`);
+                            return manifestRes.json();
+                        })
+                );
+                
+                renderGallery(shoots);
+            } catch (err) {
+                console.error('Failed to load gallery:', err);
+                document.getElementById('gallery-container').innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fa-solid fa-exclamation-triangle text-4xl text-crimson mb-4"></i>
+                        <p class="text-cream/50">Failed to load portfolio. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function renderGallery(shoots) {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = '';
+            
+            shoots.forEach((shoot, shootIndex) => {
+                const section = document.createElement('section');
+                section.className = 'shoot-section mb-16';
+                section.id = `shoot-${shoot.folder}`;
+                
+                const looks = [...new Set(shoot.images.map(img => img.look))];
+                
+                section.innerHTML = `
+                    <div class="mb-8">
+                        <h2 class="text-2xl md:text-3xl font-bold text-cream mb-2">${shoot.title}</h2>
+                        <p class="text-cream/50">${shoot.subtitle}</p>
+                    </div>
+                    
+                    ${looks.length > 1 ? `
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <button class="filter-btn active px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-crimson text-cream" data-shoot="${shoot.folder}" data-look="all">All</button>
+                        ${looks.map(look => `
+                            <button class="filter-btn px-4 py-2 text-xs digital-text uppercase border border-crimson/30 bg-midnight/50 text-cream/70 hover:border-crimson/50" data-shoot="${shoot.folder}" data-look="${look}">${look}</button>
+                        `).join('')}
+                    </div>
+                    ` : ''}
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="grid-${shoot.folder}">
+                        ${shoot.images.map((img, imgIndex) => `
+                            <div class="portfolio-item glass-card overflow-hidden cursor-pointer" data-look="${img.look}" data-shoot="${shoot.folder}" data-index="${imgIndex}">
+                                <div class="aspect-[9/16] relative">
+                                    <img 
+                                        src="work/${shoot.folder}/${img.file}" 
+                                        alt="${img.alt}"
+                                        class="w-full h-full object-cover"
+                                        loading="lazy"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-3">
+                                        <span class="text-cream text-xs">${img.look}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(section);
+                
+                // Set up filtering for this shoot
+                const filterBtns = section.querySelectorAll('.filter-btn');
+                const items = section.querySelectorAll('.portfolio-item');
+                
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const look = btn.dataset.look;
+                        
+                        filterBtns.forEach(b => {
+                            b.classList.remove('active', 'bg-crimson', 'text-cream');
+                            b.classList.add('bg-midnight/50', 'text-cream/70');
+                        });
+                        btn.classList.add('active', 'bg-crimson', 'text-cream');
+                        btn.classList.remove('bg-midnight/50', 'text-cream/70');
+                        
+                        items.forEach(item => {
+                            if (look === 'all' || item.dataset.look === look) {
+                                item.style.display = '';
+                                item.style.opacity = '0';
+                                item.style.transform = 'scale(0.95)';
+                                requestAnimationFrame(() => {
+                                    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'scale(1)';
+                                });
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+                
+                // Set up lightbox for this shoot's images
+                items.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+                        const images = visibleItems.map(i => ({
+                            src: i.querySelector('img').src,
+                            alt: i.querySelector('img').alt
+                        }));
+                        const clickedIndex = visibleItems.indexOf(item);
+                        openLightbox(images, clickedIndex);
+                    });
+                });
+            });
+        }
+        
+        // Initialize
+        loadGallery();
+    </script>
+</body>
+</html>
